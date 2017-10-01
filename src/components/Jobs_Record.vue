@@ -3,14 +3,14 @@
 
     <div class="page-title">
       <div class="title_left">
-        <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><router-link to="/Accounts"> Accounts </router-link>> {{formInput.name}}</h3>
+        <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><router-link to="/Jobs"> Jobs </router-link>> {{formInput.jobNumber}}</h3>
       </div>
 
       <div class="title_right">
         <div class="pull-right">
           <div class="input-group">
             <div class="btn-group">
-              <router-link to="/NewAccount"><button type="button" class="btn btn-default">New</button></router-link>
+              <router-link to="/NewJob"><button type="button" class="btn btn-default">New</button></router-link>
               <button type="button" class="btn btn-default">Clone</button>
               <button type="button" class="btn btn-default">Delete</button>
             </div>
@@ -26,7 +26,7 @@
         <div class="x_panel">
 
           <div class="x_title">
-            <h2>Basic Details</h2> 
+            <h2>Job Information</h2> 
             
             <div class="clearfix"></div>
           </div>
@@ -34,73 +34,43 @@
             <br />
             
             <form class="form-horizontal form-label-left">
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Name <span class="required">*</span></label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.name" type="text" class="form-control" value="Roy Bout Household">
-                </div>
-              </div>
-
-              <span class="clearfix"></span>
-
-              <br />
-              <div class="x_title">
-                <h2>Address Information</h2> 
-                <div class="clearfix"></div>
-              </div>
-              <br />
-              <!-- <div class="ln_solid"></div> -->
 
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Street Name</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Job Number</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.streetName" type="text" class="form-control" value="George Street">
+                  <input v-model="formInput.jobNumber" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Postal Code</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">List Price</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.postalCode" type="text" class="form-control" value="2006">
+                  <input v-model="formInput.listPrice" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Number</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Type</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.streetNameNumber" type="text" class="form-control" value="14">
+                  <input v-model="formInput.type" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Country</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.country" type="text" class="form-control" value="Australia">
+                  <input v-model="formInput.address" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">City</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.city" type="text" class="form-control" value="Ultimo">
+                  <input v-model="formInput.status" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">State</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Duration</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.state" type="text" class="form-control" value="NSW">
+                  <input v-model="formInput.duration" type="text" class="form-control" value="">
                 </div>
               </div>
-              <br></br><br></br><br></br><br></br>
-              <div class="col-xs-12" align="center">
-                <div class="span8">
-                  <iframe width="80%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=15+Springfield+Way,+Hythe,+CT21+5SH&aq=t&sll=52.8382,-2.327815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
-                </div>
-              </div>
-              <!-- <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control has-feedback-left" id="inputSuccess5" placeholder="">
-                  <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
-                </div>
-              </div> -->
-
               <span class="clearfix"></span>
 
               <br />
@@ -188,11 +158,11 @@
                   
                   <br />
                 </div>
-              <div class="form-group">
-                <!-- <div class="col-xs-12 col-md-offset-3"> -->
-                  <button type="button" class="btn btn-primary">Save Changes</button>
-                <!-- </div> -->
-              </div>
+                <div class="form-group">
+                  <!-- <div class="col-xs-12 col-md-offset-3"> -->
+                  <button v-on:click="saveJob" type="button" class="btn btn-primary">Save Job</button>
+                  <!-- </div> -->
+                </div>
 
             </form>
           </div>
@@ -289,37 +259,54 @@
   import axios from 'axios';
 
   export default {
-    name: 'hello',
     data () {
       return {
         formInput : {
-          name : '',
-          streetName : '',
-          streetNameNumber : '',
-          postalCode : '',
-          city : '',
-          state : '',
-          country : ''  
+          jobNumber : '',
+          travelCost : '',
+          type : '',
+          address : '',
+          duration : '',
+          timezone : '',
+          generalLedgerCode : '',
+          quantity : '',
+          reschedule : '',
+          listPrice : '',
+          travelBillable : '',
+          resourceHoursWorked : '',
+          status : '',
+          cancellationReason : '',
+          cancellationComment : ''
         }
       }
     },
 
+    methods : {
+      saveJob: function(){
+        axios.post('/insertJob', this.formInput)
+        .then(response => {
+          this.$router.push('/ExistingJob/' + response.data.jobId);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+      }
+    },
+
     mounted(){
-      axios.get('/queryAccount', {
+      axios.get('/getJob', {
         params : {
-          accountId : this.$route.params.accountId  
+          jobId : this.$route.params.jobId  
         }
       })
       .then(response => {
         var data = response.data;
-        this.formInput.name  = data.name;
-        this.formInput.streetName  = data.street_name;
-        this.formInput.streetNameNumber  = data.street_number;
-        this.formInput.postalCode  = data.postal_code;
-        this.formInput.city  = data.city;
-        this.formInput.state  = data.state;
-        this.formInput.country  = data.country;
-
+        this.formInput.jobNumber  = data.job_number;
+        this.formInput.type  = data.type;
+        this.formInput.status  = data.status;
+        this.formInput.listPrice  = data.list_price;
+        this.formInput.address  = data.address;
+        this.formInput.duration  = data.duration;
       })
       .catch(e => {
         console.log(e);

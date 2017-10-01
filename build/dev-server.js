@@ -149,6 +149,59 @@ app.get( '/getProduct', function( req, res ) {
 	} );
 } );
 
+app.get( '/getJobs', function( req, res ) {
+	console.log( '/getJobs' );
+	pool.query( 'SELECT * FROM job ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
+app.get( '/getJob', function( req, res ) {
+	console.log( '/getJob' );
+	var jobId = req.param( 'jobId' );
+
+	var query = "SELECT * FROM job WHERE job_number = '" + jobId + "' LIMIT 1";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows[ 0 ] );
+	} );
+} );
+
+app.post( '/insertJob', function( req, res ) {
+	console.log( '/insertJob' );
+	var body = req.body;
+
+	// jobNumber : '',
+	// travelCost : '',
+	// type : '',
+	// address : '',
+	// duration : '',
+	// timezone : '',
+	// generalLedgerCode : '',
+	// quantity : '',
+	// reschedule : '',
+	// listPrice : '',
+	// travelBillable : '',
+	// resourceHoursWorked : '',
+	// status : '',
+	// cancellationReason : '',
+	// cancellationComment : ''
+
+	var insertStatement = "INSERT INTO Job (job_number, travel_cost, type, address, duration, timezone, general_ledger_code, list_price, status) "; //, quantity, reschedule, travel_billable, resource_hours_worked, cancellation_reason, cancellation_comment) ";
+	insertStatement += "VALUES ('" + body.jobNumber + "', '" + body.travelCost + "', '" + body.type + "', '" + body.address + "', '" + body.duration + "', '" + body.timezone + "', '" + body.generalLedgerCode + "', '" + body.listPrice + "', '" + body.status + "') ";
+	insertStatement += "RETURNING job_number";
+
+	pool.query( insertStatement, ( err, result ) => {
+		console.log( err );
+		console.log( result );
+
+		res.send( {
+			jobId: result.rows[ 0 ].job_number
+		} );
+	} );
+
+} );
+
 console.log( '> Starting dev server...' )
 devMiddleware.waitUntilValid( () => {
 	console.log( '> Listening at ' + uri + '\n' )

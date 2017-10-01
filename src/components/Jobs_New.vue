@@ -1,16 +1,16 @@
 <template>
-  <div id="accounts">
+  <div id="jobs">
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Create New Account</h3>
+          <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Create New Job</h3>
         </div>
         <div class="title_right">
           <div class="pull-right">
             <div class="input-group">
               <div class="btn-group">
-                <router-link to="/Accounts"><button type="button" class="btn btn-default">Cancel</button></router-link>
-                <button v-on:click="saveAccount" type="button" class="btn btn-default">Save</button>
+                <router-link to="/Jobs"><button type="button" class="btn btn-default">Cancel</button></router-link>
+                <button v-on:click="saveJob" type="button" class="btn btn-default">Save</button>
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@
         <div class="x_panel">
 
           <div class="x_title">
-            <h2>Basic Details</h2> 
+            <h2>Job Information</h2> 
             
             <div class="clearfix"></div>
           </div>
@@ -32,57 +32,41 @@
             <br />
             
             <form class="form-horizontal form-label-left">
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Name <span class="required">*</span></label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.name" type="text" class="form-control" value="">
-                </div>
-              </div>
-
-              <span class="clearfix"></span>
-
-              <br />
-              <div class="x_title">
-                <h2>Address Information</h2> 
-                <div class="clearfix"></div>
-              </div>
-              <br />
-              <!-- <div class="ln_solid"></div> -->
 
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Street Name</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Job Number</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.streetName" type="text" class="form-control" value="">
+                  <input v-model="formInput.jobNumber" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Postal Code</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">List Price</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.postalCode" type="text" class="form-control" value="">
+                  <input v-model="formInput.listPrice" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Number</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Type</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.streetNameNumber" type="text" class="form-control" value="">
+                  <input v-model="formInput.type" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Country</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.country" type="text" class="form-control" value="">
+                  <input v-model="formInput.address" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">City</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.city" type="text" class="form-control" value="">
+                  <input v-model="formInput.status" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">State</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Duration</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.state" type="text" class="form-control" value="">
+                  <input v-model="formInput.duration" type="text" class="form-control" value="">
                 </div>
               </div>
               <span class="clearfix"></span>
@@ -174,7 +158,7 @@
                 </div>
                 <div class="form-group">
                   <!-- <div class="col-xs-12 col-md-offset-3"> -->
-                  <button v-on:click="saveAccount" type="button" class="btn btn-primary">Save Account</button>
+                  <button v-on:click="saveJob" type="button" class="btn btn-primary">Save Job</button>
                   <!-- </div> -->
                 </div>
 
@@ -195,22 +179,30 @@
     data () {
       return {
         formInput : {
-          name : '',
-          streetName : '',
-          streetNameNumber : '',
-          postalCode : '',
-          city : '',
-          state : '',
-          country : ''  
+          jobNumber : '',
+          travelCost : '',
+          type : '',
+          address : '',
+          duration : '',
+          timezone : '',
+          generalLedgerCode : '',
+          quantity : '',
+          reschedule : '',
+          listPrice : '',
+          travelBillable : '',
+          resourceHoursWorked : '',
+          status : '',
+          cancellationReason : '',
+          cancellationComment : ''
         }
       }
     },
 
     methods : {
-      saveAccount: function(){
-        axios.post('/insertAccount', this.formInput)
+      saveJob: function(){
+        axios.post('/insertJob', this.formInput)
         .then(response => {
-          this.$router.push('/ExistingAccount/' + response.data.accountId);
+          this.$router.push('/ExistingJob/' + response.data.jobId);
         })
         .catch(e => {
           console.log(e);

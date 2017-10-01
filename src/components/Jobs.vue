@@ -1,15 +1,15 @@
 <template>
-  <div id="accounts">
+  <div id="jobs">
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Accounts <small></small></h3>
+          <h3> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Jobs <small></small></h3>
         </div>
         <div class="title_right">
           <div class="pull-right">
             <div class="input-group">
               <div class="btn-group">
-                <router-link to="/NewAccount"><button type="button" class="btn btn-default">New</button></router-link>
+                <router-link to="/NewJob"><button type="button" class="btn btn-default">New</button></router-link>
                 <button type="button" class="btn btn-default">Import</button>
                 <button type="button" class="btn btn-default">Reports</button>
               </div>
@@ -27,24 +27,24 @@
               <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Street Name</th>
-                    <th>Postal Code</th>
-                    <th>State</th>
-                    <th>Country</th>
+                    <th>Job Number</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>List Price</th>
+                    <th>Address</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="account in accounts">
+                  <tr v-for="job in jobs">
                     <td>
-                      <router-link :to="{ name: 'ExistingAccount', params: {accountId : account.account_id}}">
-                        {{ account.name }}
+                      <router-link :to="{ name: 'ExistingJob', params: {jobId : job.job_number}}">
+                        {{ job.job_number }}
                       </router-link>
                     </td>
-                    <td>{{ account.street_name }}</td>
-                    <td>{{ account.postal_code }}</td>
-                    <td>{{ account.state }}</td>
-                    <td>{{ account.country }}</td>
+                    <td>{{ job.type }}</td>
+                    <td>{{ job.status }}</td>
+                    <td>{{ job.list_price }}</td>
+                    <td>{{ job.address }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -76,27 +76,19 @@
     data () {
 
       return {
-        accounts : []
+        jobs : []
       }
     },
 
     methods : {
-      getAccounts: function(){
-        axios.get(`/query`)
-        .then(response => {
-          this.accounts = response.data;
-        })
-        .catch(e => {
-          console.log(e);
-        })
-      },
+      
     },
 
     mounted(){
-      console.log('mount: accounts component');
-      axios.get(`/query`)
+      console.log('mount: jobs component');
+      axios.get(`/getJobs`)
       .then(response => {
-        this.accounts = response.data;
+        this.jobs = response.data;
       })
       .catch(e => {
         console.log(e);
