@@ -167,6 +167,16 @@ app.get( '/getJob', function( req, res ) {
 	} );
 } );
 
+app.get( '/getJobCount', function( req, res ) {
+	console.log( '/getJobCount' );
+
+	var query = "SELECT count(*) FROM job";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows[ 0 ] );
+	} );
+} );
+
 app.post( '/insertJob', function( req, res ) {
 	console.log( '/insertJob' );
 	var body = req.body;
@@ -187,17 +197,31 @@ app.post( '/insertJob', function( req, res ) {
 	// cancellationReason : '',
 	// cancellationComment : ''
 
+	//Nullify integer fields if blank
+	if ( body.duration.length === 0 ) body.duration = 'null';
+
 	var insertStatement = "INSERT INTO Job (job_number, travel_cost, type, address, duration, timezone, general_ledger_code, list_price, status) "; //, quantity, reschedule, travel_billable, resource_hours_worked, cancellation_reason, cancellation_comment) ";
-	insertStatement += "VALUES ('" + body.jobNumber + "', '" + body.travelCost + "', '" + body.type + "', '" + body.address + "', '" + body.duration + "', '" + body.timezone + "', '" + body.generalLedgerCode + "', '" + body.listPrice + "', '" + body.status + "') ";
-	insertStatement += "RETURNING job_number";
+	insertStatement += "VALUES (";
+	insertStatement += "'" + body.jobNumber + "', ";
+	insertStatement += "'" + body.travelCost + "', ";
+	insertStatement += "'" + body.type + "', ";
+	insertStatement += "'" + body.address + "', ";
+	insertStatement += body.duration + ", ";
+	insertStatement += "'" + body.timezone + "', ";
+	insertStatement += "'" + body.generalLedgerCode + "', ";
+	insertStatement += "'" + body.listPrice + "', ";
+	insertStatement += "'" + body.status + "')";
+	insertStatement += " RETURNING job_number";
 
 	pool.query( insertStatement, ( err, result ) => {
-		console.log( err );
-		console.log( result );
-
-		res.send( {
-			jobId: result.rows[ 0 ].job_number
-		} );
+		if ( err ) {
+			console.log( 'An error occured while inserting the job in the database' );
+			console.log( err );
+		} else {
+			res.send( {
+				jobId: result.rows[ 0 ].job_number
+			} );
+		}
 	} );
 
 } );

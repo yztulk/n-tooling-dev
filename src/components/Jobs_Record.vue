@@ -180,7 +180,7 @@
             <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
               <div class="panel">
                 <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Contacts (3)</h4>
+                  <h4 class="panel-title"><span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Support Items (2)</h4>
                 </a>
                 <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                   <div class="panel-body">
@@ -188,47 +188,25 @@
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
+                          <th>Product</th>
+                          <th>Quantity</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
+                          <th scope="row"><router-link to="/ExistingSupportItem">0037287</router-link></th>
+                          <td>Speech Therapy</td>
+                          <td>10</td>
                         </tr>
                         <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
+                          <th scope="row"><router-link to="/ExistingSupportItem">0037288</router-link></th>
+                          <td>Therapy Assistent</td>
+                          <td>5</td>
                         </tr>
                       </tbody>
                     </table>
-                    <router-link to="/NewContact"><button type="submit" class="btn btn-default">New Contact</button></router-link> 
+                    <router-link to="/NewSupportItem"><button type="submit" class="btn btn-default">New Support Item</button></router-link>
                   </div>
-                </div>
-              </div>
-              <div class="panel">
-                <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-road" aria-hidden="true"></span> Leads (0)</h4>
-                </a>
-                <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                  <div class="panel-body">
-                    <p><strong>Collapsible Item 2 data</strong>
-                    </p>
-                    <router-link to="/NewLead"><button type="submit" class="btn btn-default">New Lead</button></router-link>
-                  </div>
-                  
                 </div>
               </div>
               <div class="panel">
@@ -237,9 +215,21 @@
                 </a>
                 <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                   <div class="panel-body">
-                    <p><strong>Collapsible Item 3 data</strong>
+                    <p><strong>Collapsible Item 2 data</strong>
                     </p>
                     <router-link to="/ExistingFundCategory"><button type="submit" class="btn btn-default">New Attachment</button></router-link>
+                  </div>
+                </div>
+              </div>
+              <div class="panel">
+                <a class="panel-heading collapsed" role="tab" id="headingFour1" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1" aria-expanded="false" aria-controls="collapseFour">
+                  <h4 class="panel-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Notes (0)</h4>
+                </a>
+                <div id="collapseFour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div class="panel-body">
+                    <p><strong>Collapsible Item 3 data</strong>
+                    </p>
+                    <router-link to="/ExistingFundCategory"><button type="submit" class="btn btn-default">Add New Note</button></router-link> 
                   </div>
                 </div>
               </div>

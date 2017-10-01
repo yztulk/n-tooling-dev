@@ -15,7 +15,7 @@
       </div>
       <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
         <span class="count_top"><i class="fa fa-user"></i> Total Jobs Scheduled Today</span>
-        <div class="count green">120</div>
+        <div class="count green">{{ statistic.jobCount }}</div>
         <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
       </div>
       <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -684,12 +684,30 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'hello',
     data () {
       return {
-        
+        statistic : {
+          jobCount : ''
+        }
       }
+    },
+
+    methods : {
+      
+    },
+
+    mounted(){
+      console.log('mount: home component');
+      axios.get(`/getJobCount`)
+      .then(response => {
+        this.statistic.jobCount = response.data.count;
+      })
+      .catch(e => {
+        console.log(e);
+      })
     }
   }
 </script>
