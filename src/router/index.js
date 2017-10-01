@@ -26,6 +26,9 @@ import ExistingProduct from '@/components/Products_Record'
 import Plans from '@/components/Plans'
 import ExistingPlan from '@/components/Plans_Record'
 import NewPlan from '@/components/Plans_New'
+import Jobs from '@/components/Jobs'
+import ExistingJob from '@/components/Jobs_Record'
+import NewJob from '@/components/Jobs_New'
 import Reports from '@/components/Reports'
 import Settings from '@/components/Settings'
 import UserProfile from '@/components/User_Profile'
@@ -38,140 +41,156 @@ Vue.use( Router )
 export default new Router( {
 	routes: [ {
 		path: '/',
-		name: 'Home',
-		component: Home
+		component: Home,
+		name: 'Home'
 	}, {
 		path: '/AllPages',
-		name: 'AllPages',
-		component: AllPages
+		component: AllPages,
+		name: 'AllPages'
 	}, {
 		path: '/SupportItems',
-		name: 'SupportItems',
-		component: SupportItems
+		component: SupportItems,
+		name: 'SupportItems'
 	}, {
 		path: '/NewSupportItem',
-		name: 'NewSupportItem',
-		component: NewSupportItem
+		component: NewSupportItem,
+		name: 'NewSupportItem'
 	}, {
 		path: '/ExistingSupportItem',
-		name: 'ExistingSupportItem',
-		component: ExistingSupportItem
+		component: ExistingSupportItem,
+		name: 'ExistingSupportItem'
 	}, {
 		path: '/Relationships',
-		name: 'Relationships',
-		component: Relationships
+		component: Relationships,
+		name: 'Relationships'
 	}, {
 		path: '/NewRelationship',
-		name: 'NewRelationship',
-		component: NewRelationship
+		component: NewRelationship,
+		name: 'NewRelationship'
 	}, {
 		path: '/ExistingRelationship',
-		name: 'ExistingRelationship',
-		component: ExistingRelationship
+		component: ExistingRelationship,
+		name: 'ExistingRelationship'
 	}, {
 		path: '/Products',
-		name: 'Products',
-		component: Products
+		component: Products,
+		name: 'Products'
 	}, {
 		path: '/NewProduct',
-		name: 'NewProduct',
-		component: NewProduct
+		component: NewProduct,
+		name: 'NewProduct'
 	}, {
 		path: '/ExistingProduct',
-		name: 'ExistingProduct',
-		component: ExistingProduct
+		component: ExistingProduct,
+		name: 'ExistingProduct'
 	}, {
 		path: '/ExistingProduct/:productCode',
-		name: 'ExistingProduct',
-		component: ExistingProduct
+		component: ExistingProduct,
+		name: 'ExistingProduct'
+	}, {
+		path: '/Jobs',
+		component: Jobs,
+		name: 'Jobs'
+	}, {
+		path: '/NewJob',
+		component: NewJob,
+		name: 'NewJob'
+	}, {
+		path: '/ExistingJob',
+		component: ExistingJob,
+		name: 'ExistingJob'
+	}, {
+		path: '/ExistingJob/:jobId',
+		component: ExistingJob,
+		name: 'ExistingJob'
 	}, {
 		path: '/Accounts',
-		name: 'Accounts',
-		component: Accounts
+		component: Accounts,
+		name: 'Accounts'
 	}, {
 		path: '/Contacts',
-		name: 'Contacts',
-		component: Contacts
+		component: Contacts,
+		name: 'Contacts'
 	}, {
 		path: '/CSVCreation',
-		name: 'CSVCreation',
-		component: CSVCreation
+		component: CSVCreation,
+		name: 'CSVCreation'
 	}, {
 		path: '/FundSources',
-		name: 'FundSources',
-		component: FundSources
+		component: FundSources,
+		name: 'FundSources'
 	}, {
 		path: '/ExistingFundSource',
-		name: 'ExistingFundSource',
-		component: ExistingFundSource
+		component: ExistingFundSource,
+		name: 'ExistingFundSource'
 	}, {
 		path: '/NewFundSource',
-		name: 'NewFundSource',
-		component: NewFundSource
+		component: NewFundSource,
+		name: 'NewFundSource'
 	}, {
 		path: '/Leads',
-		name: 'Leads',
-		component: Leads
+		component: Leads,
+		name: 'Leads'
 	}, {
 		path: '/Plans',
-		name: 'Plans',
-		component: Plans
+		component: Plans,
+		name: 'Plans'
 	}, {
 		path: '/NewPlan',
-		name: 'NewPlan',
-		component: NewPlan
+		component: NewPlan,
+		name: 'NewPlan'
 	}, {
 		path: '/Reports',
-		name: 'Reports',
-		component: Reports
+		component: Reports,
+		name: 'Reports'
 	}, {
 		path: '/Settings',
-		name: 'Settings',
-		component: Settings
+		component: Settings,
+		name: 'Settings'
 	}, {
 		path: '/NewLead',
-		name: 'NewLead',
-		component: NewLead
+		component: NewLead,
+		name: 'NewLead'
 	}, {
 		path: '/ExistingLead',
-		name: 'ExistingLead',
-		component: ExistingLead
+		component: ExistingLead,
+		name: 'ExistingLead'
 	}, {
 		path: '/ExistingPlan',
-		name: 'ExistingPlan',
-		component: ExistingPlan
+		component: ExistingPlan,
+		name: 'ExistingPlan'
 	}, {
 		path: '/ExistingAccount',
-		name: 'ExistingAccount',
-		component: ExistingAccount
+		component: ExistingAccount,
+		name: 'ExistingAccount'
 	}, {
 		path: '/ExistingAccount/:accountId',
-		name: 'ExistingAccount',
-		component: ExistingAccount
+		component: ExistingAccount,
+		name: 'ExistingAccount'
 	}, {
 		path: '/NewAccount',
-		name: 'NewAccount',
-		component: NewAccount
+		component: NewAccount,
+		name: 'NewAccount'
 	}, {
 		path: '/ExistingContact',
-		name: 'ExistingContact',
-		component: ExistingContact
+		component: ExistingContact,
+		name: 'ExistingContact'
 	}, {
 		path: '/ExistingFundCategory',
-		name: 'ExistingFundCategory',
-		component: ExistingFundCategory
+		component: ExistingFundCategory,
+		name: 'ExistingFundCategory'
 	}, {
 		path: '/NewFundCategory',
-		name: 'NewFundCategory',
-		component: NewFundCategory
+		component: NewFundCategory,
+		name: 'NewFundCategory'
 	}, {
 		path: '/NewContact',
-		name: 'NewContact',
-		component: NewContact
+		component: NewContact,
+		name: 'NewContact'
 	}, {
 		path: '/UserProfile',
-		name: 'UserProfile',
-		component: UserProfile
+		component: UserProfile,
+		name: 'UserProfile'
 	} ],
 	mode: 'history',
 	scrollBehavior( to, from, savedPosition ) {
