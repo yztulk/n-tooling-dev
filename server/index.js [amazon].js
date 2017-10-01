@@ -93,6 +93,83 @@ app.get( '/getProduct', function( req, res ) {
 	} );
 } );
 
+app.get( '/getJobs', function( req, res ) {
+	console.log( '/getJobs' );
+	pool.query( 'SELECT * FROM job ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
+app.get( '/getJob', function( req, res ) {
+	console.log( '/getJob' );
+	var jobId = req.param( 'jobId' );
+
+	var query = "SELECT * FROM job WHERE job_number = '" + jobId + "' LIMIT 1";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows[ 0 ] );
+	} );
+} );
+
+app.get( '/getJobCount', function( req, res ) {
+	console.log( '/getJobCount' );
+
+	var query = "SELECT count(*) FROM job";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows[ 0 ] );
+	} );
+} );
+
+app.post( '/insertJob', function( req, res ) {
+	console.log( '/insertJob' );
+	var body = req.body;
+
+	// jobNumber : '',
+	// travelCost : '',
+	// type : '',
+	// address : '',
+	// duration : '',
+	// timezone : '',
+	// generalLedgerCode : '',
+	// quantity : '',
+	// reschedule : '',
+	// listPrice : '',
+	// travelBillable : '',
+	// resourceHoursWorked : '',
+	// status : '',
+	// cancellationReason : '',
+	// cancellationComment : ''
+
+	//Nullify integer fields if blank
+	if ( body.duration.length === 0 ) body.duration = 'null';
+
+	var insertStatement = "INSERT INTO Job (job_number, travel_cost, type, address, duration, timezone, general_ledger_code, list_price, status) "; //, quantity, reschedule, travel_billable, resource_hours_worked, cancellation_reason, cancellation_comment) ";
+	insertStatement += "VALUES (";
+	insertStatement += "'" + body.jobNumber + "', ";
+	insertStatement += "'" + body.travelCost + "', ";
+	insertStatement += "'" + body.type + "', ";
+	insertStatement += "'" + body.address + "', ";
+	insertStatement += body.duration + ", ";
+	insertStatement += "'" + body.timezone + "', ";
+	insertStatement += "'" + body.generalLedgerCode + "', ";
+	insertStatement += "'" + body.listPrice + "', ";
+	insertStatement += "'" + body.status + "')";
+	insertStatement += " RETURNING job_number";
+
+	pool.query( insertStatement, ( err, result ) => {
+		if ( err ) {
+			console.log( 'An error occured while inserting the job in the database' );
+			console.log( err );
+		} else {
+			res.send( {
+				jobId: result.rows[ 0 ].job_number
+			} );
+		}
+	} );
+
+} );
+
 /**
  * END APIs
  */
