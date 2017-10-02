@@ -24,7 +24,12 @@
         <div class="col-md-8 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_content">
-              <table id="datatable" class="table table-striped table-bordered">
+
+              <div id="people">
+                <v-client-table :data="table.data" :columns="table.columns" :options="table.options"></v-client-table>
+              </div>
+
+              <!-- <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -47,7 +52,7 @@
                     <td>{{ account.country }}</td>
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
             </div>
           </div>
         </div>
@@ -71,32 +76,52 @@
 <script>
   import axios from 'axios';
 
+
   export default {
 
     data () {
 
       return {
-        accounts : []
+        accounts : [],
+        table: {
+          columns: ['name','street_number','postal_code','state', 'country'],
+          data: [],
+          options: {
+            perPage : 15,
+            perPageValues : [5, 10, 15, 25, 50, 100],
+            headings: {
+                name: 'Name',
+                street_number: 'Street Number',
+                postal_code: 'Postal Code',
+                state: 'State',
+                country: 'Country'
+            },
+            
+            texts : { 
+              count:'Showing {from} to {to} of in total {count} Accounts', 
+              filter:'Search Account:',
+              filterPlaceholder:'', 
+              limit:'Table Size:', 
+              noResults:'No account found', 
+              page:'Page:'
+              // for dropdown pagination filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column loading:'Loading...', // First request to server defaultOption:'Select {column}' // default option for list filters }
+            }
+          }
+        }
       }
     },
 
     methods : {
-      getAccounts: function(){
-        axios.get(`/query`)
-        .then(response => {
-          this.accounts = response.data;
-        })
-        .catch(e => {
-          console.log(e);
-        })
-      },
+
     },
 
     mounted(){
       console.log('mount: accounts component');
       axios.get(`/query`)
       .then(response => {
-        this.accounts = response.data;
+        // this.accounts = response.data;
+        this.table.data = response.data;
+        // console.log(this.table.data);
       })
       .catch(e => {
         console.log(e);

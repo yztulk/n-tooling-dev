@@ -3,6 +3,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import {
+	ServerTable,
+	ClientTable,
+	Event
+} from 'vue-tables-2';
+Vue.use( ClientTable, {}, false );
 
 Vue.config.productionTip = false
 

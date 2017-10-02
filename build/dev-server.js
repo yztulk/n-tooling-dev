@@ -152,6 +152,7 @@ app.get( '/getProduct', function( req, res ) {
 app.get( '/getJobs', function( req, res ) {
 	console.log( '/getJobs' );
 	pool.query( 'SELECT * FROM job ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+		//res.send( resQuery.rows );
 		res.send( resQuery.rows );
 	} );
 } );

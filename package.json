@@ -16,10 +16,12 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.18.2",
+    "datatables.net": "^1.10.16",
     "moment": "^2.18.1",
     "pg": "^7.3.0",
     "vue": "^2.4.2",
-    "vue-router": "^2.7.0"
+    "vue-router": "^2.7.0",
+    "vue-tables-2": "^0.6.75"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -24,7 +24,8 @@
         <div class="col-md-8 col-sm-12 col-xs-12">
           <div class="x_panel">
             <div class="x_content">
-              <table id="datatable" class="table table-striped table-bordered">
+
+              <table id="jobsTable" class="table table-striped table-bordered">
                 <thead>
                   <tr>
                     <th>Job Number</th>
@@ -73,6 +74,9 @@
 
   export default {
 
+    components: {
+    },
+
     data () {
 
       return {
@@ -88,6 +92,7 @@
       console.log('mount: jobs component');
       axios.get(`/getJobs`)
       .then(response => {
+        //console.log(response.data);
         this.jobs = response.data;
       })
       .catch(e => {
