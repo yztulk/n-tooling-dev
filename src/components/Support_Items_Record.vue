@@ -3,7 +3,7 @@
 
     <div class="page-title">
       <div class="title_left">
-        <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><router-link to="/SupportItems"> Support Items</router-link> > 0037287</h3>
+        <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><router-link to="/SupportItems"> Support Items</router-link> > {{formInput.number}}</h3>
       </div>
 
       <div class="title_right">
@@ -36,25 +36,25 @@
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Number</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="0037287" readonly="readonly">
+                    <input v-model="formInput.number" type="text" class="form-control" value="0037287" readonly="readonly">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Product</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="Speech Therapy">
+                    <input v-model="formInput.product" type="text" class="form-control" value="Speech Therapy">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Fund Category</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="NDIS Managed">
+                    <input v-model="formInput.fundCategory" type="text" class="form-control" value="NDIS Managed">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Quantity of Measure</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="Hour" readonly="readonly">
+                    <input v-model="formInput.quantityOfMeasure" type="text" class="form-control" value="Hour" readonly="readonly">
                   </div>
                 </div>
 
@@ -70,25 +70,25 @@
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Quantity</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="10">
+                    <input v-model="formInput.quantity" type="text" class="form-control" value="">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">List Price</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$187.50" readonly="readonly">
+                    <input v-model="formInput.listPrice" type="text" class="form-control" value="$" readonly="readonly">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Total Price</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      <input type="text" class="form-control" value="$" readonly="readonly">
+                      <input v-model="formInput.totalPrice" type="text" class="form-control" value="$" readonly="readonly">
                     </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Sale Price</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$">
+                    <input v-model="formInput.salePrice" type="text" class="form-control" value="">
                   </div>
                 </div>
 
@@ -104,25 +104,25 @@
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Committed</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$1000.00" readonly="readonly">
+                    <input v-model="formInput.committed" type="text" class="form-control" value="" readonly="readonly">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Consumed</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$475" readonly="readonly">
+                    <input v-model="formInput.consumed" type="text" class="form-control" value="" readonly="readonly">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Invoiced</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$200" readonly="readonly">
+                    <input v-model="formInput.invoiced" type="text" class="form-control" value="" readonly="readonly">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Claimed</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$200" readonly="readonly">
+                    <input v-model="formInput.claimed" type="text" class="form-control" value="" readonly="readonly">
                   </div>
                 </div>
 
@@ -138,13 +138,13 @@
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Late Cancellation Count</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="0" readonly="readonly">
+                    <input v-model="formInput.lateCancellationCount" type="text" class="form-control" value="" readonly="readonly">
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">No Show Count</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="0" readonly="readonly">
+                    <input v-model="formInput.noShowCount" type="text" class="form-control" value="" readonly="readonly">
                   </div>
                 </div>
 
@@ -291,7 +291,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <router-link to="/ExistingFundCategory"><button type="submit" class="btn btn-default">Add Job</button></router-link>
+                    <router-link to="/NewJob"><button type="submit" class="btn btn-default">Add Job</button></router-link>
                   </div>
                 </div>
               </div>
@@ -339,13 +339,73 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'hello',
     data () {
       return {
-        
+        formInput : {
+          number: '',
+          fundCategory: '',
+          product: '',
+          quantityOfMeasure: '',
+          quantity: '',
+          totalPrice: '',
+          listPrice: '',
+          salePrice: '',
+          committed: '',
+          consumed: '',
+          invoiced: '',
+          claimed: '',
+          lateCancellationCount: '',
+          noShowCount: ''
+        }
       }
+    },
+
+    methods : {
+      saveSupportItem: function(){
+        axios.post('/insertSupportItem', this.formInput)
+        .then(response => {
+          this.$router.push('/ExistingSupportItem/' + response.data.supportItemId);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+      }
+    },
+
+    mounted(){
+      axios.get('/getSupportItem', {
+        params : {
+          supportItemId : this.$route.params.supportItemId  
+        }
+      })
+      .then(response => {
+        var data = response.data;
+        console.log(data);
+
+        this.formInput.number  = data.support_item_number;
+        //this.formInput.fundCategory  = data.;
+        //this.formInput.product  = data.;
+        //this.formInput.quantityOfMeasure  = data.;
+        this.formInput.quantity  = data.quantity;
+        this.formInput.totalPrice  = data.total_price;
+        this.formInput.listPrice  = data.list_price;
+        this.formInput.salePrice  = data.sale_price;
+        this.formInput.committed  = data.committed;
+        this.formInput.consumed  = data.consumed;
+        this.formInput.invoiced  = data.invoiced;
+        this.formInput.claimed  = data.claimed;
+        this.formInput.lateCancellationCount  = data.late_cancellation_count;
+        this.formInput.noShowCount  = data.no_show_count;
+
+      })
+      .catch(e => {
+        console.log(e);
+      })
     }
+
   }
 </script>
 

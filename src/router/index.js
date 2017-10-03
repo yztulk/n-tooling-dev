@@ -60,6 +60,10 @@ export default new Router( {
 		component: ExistingSupportItem,
 		name: 'ExistingSupportItem'
 	}, {
+		path: '/ExistingSupportItem/:supportItemId',
+		component: ExistingSupportItem,
+		name: 'ExistingSupportItem'
+	}, {
 		path: '/Relationships',
 		component: Relationships,
 		name: 'Relationships'

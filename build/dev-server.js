@@ -201,9 +201,11 @@ app.post( '/insertJob', function( req, res ) {
 	//Nullify integer fields if blank
 	if ( body.duration.length === 0 ) body.duration = 'null';
 
-	var insertStatement = "INSERT INTO Job (job_number, travel_cost, type, address, duration, timezone, general_ledger_code, list_price, status) "; //, quantity, reschedule, travel_billable, resource_hours_worked, cancellation_reason, cancellation_comment) ";
+	var insertStatement = "INSERT INTO Job (job_number, support_item_id, travel_cost, type, address, duration, timezone, general_ledger_code, list_price, status) "; //, quantity, reschedule, travel_billable, resource_hours_worked, cancellation_reason, cancellation_comment) ";
 	insertStatement += "VALUES (";
 	insertStatement += "'" + body.jobNumber + "', ";
+	//insertStatement += "'SI-12', ";
+	insertStatement += "'" + body.supportItemId + "', ";
 	insertStatement += "'" + body.travelCost + "', ";
 	insertStatement += "'" + body.type + "', ";
 	insertStatement += "'" + body.address + "', ";
@@ -225,6 +227,24 @@ app.post( '/insertJob', function( req, res ) {
 		}
 	} );
 
+} );
+
+app.get( '/getSupportItems', function( req, res ) {
+	console.log( '/getSupportItems' );
+	pool.query( 'SELECT * FROM support_item ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
+app.get( '/getSupportItem', function( req, res ) {
+	console.log( '/getSupportItem' );
+	var supportItemId = req.param( 'supportItemId' );
+
+	var query = "SELECT * FROM support_item WHERE support_item_number = '" + supportItemId + "' LIMIT 1";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows[ 0 ] );
+	} );
 } );
 
 console.log( '> Starting dev server...' )

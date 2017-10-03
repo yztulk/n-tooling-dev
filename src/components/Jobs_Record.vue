@@ -36,15 +36,24 @@
             <form class="form-horizontal form-label-left">
 
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Job Number</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Support Item</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.jobNumber" type="text" class="form-control" value="">
+                  <!-- <router-link to="/ExistingSupportItem" class="btn">{{formInput.supportItemId}}</router-link> -->
+                      <router-link :to="{ name: 'ExistingSupportItem', params: {supportItemId : formInput.supportItemId}}" class="btn">
+                        {{formInput.supportItemId}}
+                      </router-link>
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">List Price</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <input v-model="formInput.listPrice" type="text" class="form-control" value="">
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Job Number</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input v-model="formInput.jobNumber" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
@@ -179,41 +188,10 @@
             <!-- start accordion -->
             <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
               <div class="panel">
-                <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Support Items (2)</h4>
-                </a>
-                <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                  <div class="panel-body">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Product</th>
-                          <th>Quantity</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row"><router-link to="/ExistingSupportItem">0037287</router-link></th>
-                          <td>Speech Therapy</td>
-                          <td>10</td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><router-link to="/ExistingSupportItem">0037288</router-link></th>
-                          <td>Therapy Assistent</td>
-                          <td>5</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <router-link to="/NewSupportItem"><button type="submit" class="btn btn-default">New Support Item</button></router-link>
-                  </div>
-                </div>
-              </div>
-              <div class="panel">
                 <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
                   <h4 class="panel-title"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Attachments (0)</h4>
                 </a>
-                <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div id="collapseThree1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
                   <div class="panel-body">
                     <p><strong>Collapsible Item 2 data</strong>
                     </p>
@@ -253,6 +231,7 @@
       return {
         formInput : {
           jobNumber : '',
+          supportItemId: '',
           travelCost : '',
           type : '',
           address : '',
@@ -273,6 +252,7 @@
 
     methods : {
       saveJob: function(){
+        this.formInput.supportItemId = 'SI-12';
         axios.post('/insertJob', this.formInput)
         .then(response => {
           this.$router.push('/ExistingJob/' + response.data.jobId);
@@ -292,6 +272,7 @@
       .then(response => {
         var data = response.data;
         this.formInput.jobNumber  = data.job_number;
+        this.formInput.supportItemId  = data.support_item_id;
         this.formInput.type  = data.type;
         this.formInput.status  = data.status;
         this.formInput.listPrice  = data.list_price;

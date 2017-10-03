@@ -24,184 +24,68 @@
         <div class="col-xs-12">
           <div class="x_panel">
             <div class="x_content">
-              <!-- <p class="text-muted font-13 m-b-30">
-                DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
-              </p> -->
               <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Code</th>
-                    <th>Description</th>
-                    <th>Unit of Measure</th>
-                    <th>Product Family</th>
-                    <th>Quote</th>
+                    <th>Number</th>
+                    <th>List Price</th>
+                    <th>Committed</th>
+                    <th>Consumed</th>
+                    <th>Invoiced</th>
+                    <th>Claimed</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td><router-link to="/ExistingProduct">Exercice physiology</router-link></td>
-                    <td>15_982_982_01</td>
-                    <td></td>
-                    <td>Hour</td>
-                    <td>NDIS</td>
-                    <td>No</td>
+                  <tr v-for="supportItem in supportItems">
+                    <td>
+                      <router-link :to="{ name: 'ExistingSupportItem', params: {supportItemId : supportItem.support_item_number}}">
+                        {{ supportItem.support_item_number }}
+                      </router-link>
+                    </td>
+                    <td>{{ supportItem.list_price }}</td>
+                    <td>{{ supportItem.committed }}</td>
+                    <td>{{ supportItem.consumed }}</td>
+                    <td>{{ supportItem.invoiced }}</td>
+                    <td>{{ supportItem.claimed }}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import axios from 'axios';
 
   export default {
-    name: 'hello',
+
+    components: {
+    },
+
     data () {
+
       return {
-        
+        supportItems : []
       }
+    },
+
+    methods : {
+      
+    },
+
+    mounted(){
+      console.log('mount: support items component');
+      axios.get('/getSupportItems')
+      .then(response => {
+        this.supportItems = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      })
     }
   }
 </script>
