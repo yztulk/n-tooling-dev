@@ -7,7 +7,12 @@ TODO:
 - The database function func_job_roll_up_financials() also updates consumed, invoiced and claimed even if they are blank. Should put an if statement in the function to only do the update if the query returned a result.
 - roll ups to fund category, fund source and plan
 
-
-
 Find out:
 - How to deploy database changes to production
+
+
+Production:
+- install a monitoring tool (pm2)
+- install a reverse proxy
+- use https instead of http
+- run application in cluster mode
