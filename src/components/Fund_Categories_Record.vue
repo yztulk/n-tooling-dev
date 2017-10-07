@@ -3,7 +3,7 @@
 
     <div class="page-title">
       <div class="title_left">
-        <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><router-link to="/Plans"> Plans</router-link> > <router-link to="/ExistingPlan">Roy Bout</router-link> > NDIS Managed (Fund Category)</h3>
+        <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><router-link to="/Plans"> Plans</router-link> > <router-link to="/ExistingPlan">{{formInput.clientId}}</router-link> > {{formInput.fundCategoryNumber}}</h3>
       </div>
       <div class="title_right">
         <div class="pull-right">
@@ -35,37 +35,40 @@
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Plan</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <router-link to="/ExistingPlan" class="btn">0062762</router-link>
+                  <!-- <router-link to="/ExistingPlan" class="btn">{{formInput.planId}}</router-link> -->
+                  <router-link :to="{ name: 'ExistingPlan', params: {planId : formInput.planId}}" class="btn">
+                    {{formInput.planId}}
+                  </router-link>
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="Active">
+                  <input v-model="formInput.status" type="text" class="form-control">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Client</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <router-link to="/ExistingContact" class="btn">Roy Bout</router-link>
+                  <router-link to="/ExistingContact" class="btn">{{formInput.clientId}}</router-link>
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="Assistive Technology">
+                  <router-link to="/ExistingContact" class="btn">{{formInput.categoryId}}</router-link>
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Fund Source</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="NDIS Managed">
+                  <router-link to="/ExistingContact" class="btn">{{formInput.fundSourceId}}</router-link>
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Price Book</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="NSW">
+                  <router-link to="/ExistingContact" class="btn">{{formInput.pricebookId}}</router-link>
                 </div>
               </div>
 
@@ -82,37 +85,37 @@
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Total Budget</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$110,000" readonly="readonly">
+                  <input v-model="formInput.totalBudget" type="text" class="form-control" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Available</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$90,000" readonly="readonly">
+                  <input v-model="formInput.available" type="text" class="form-control" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Committed</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$5,000" readonly="readonly">
+                  <input v-model="formInput.committed" type="text" class="form-control" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Consumed</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$5,000" readonly="readonly">
+                  <input v-model="formInput.consumed" type="text" class="form-control" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Invoiced</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$5,000" readonly="readonly">
+                  <input v-model="formInput.invoiced" type="text" class="form-control" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Claimed</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$5,000" readonly="readonly">
+                  <input v-model="formInput.claimed" type="text" class="form-control" readonly="readonly">
                 </div>
               </div>
 
@@ -226,7 +229,7 @@
             <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
               <div class="panel">
                 <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Support Items (2)</h4>
+                  <h4 class="panel-title"><span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Support Items ({{supportItems.length}})</h4>
                 </a>
                 <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                   <div class="panel-body">
@@ -239,15 +242,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row"><router-link to="/ExistingSupportItem">0037287</router-link></th>
-                          <td>Speech Therapy</td>
-                          <td>10</td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><router-link to="/ExistingSupportItem">0037288</router-link></th>
-                          <td>Therapy Assistent</td>
-                          <td>5</td>
+                        <tr v-for="supportItem in supportItems">
+                          <td>
+                            <router-link :to="{ name: 'ExistingSupportItem', params: {supportItemId : supportItem.support_item_number}}">
+                              {{ supportItem.support_item_number }}
+                            </router-link>
+                          </td>
+                          <td>TODO</td>
+                          <td>{{ supportItem.quantity }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -320,12 +322,105 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'hello',
     data () {
       return {
-        
+        formInput : {
+          status: '',
+          fundCategoryNumber: '',
+          planId: '',
+          clientId: '',
+          fundSourceId: '',
+          pricebookId: '',
+          categoryId: '',
+          totalBudget: '',
+          available: '',
+          committed: '',
+          consumed: '',
+          invoiced: '',
+          claimed: '',
+        },
+
+        supportItems: [],
+        fundAdjustments: [],
+        attachments: []
       }
+    },
+
+    methods : {
+      saveFundCategory: function(){
+        axios.post('/saveFundCategory', this.formInput)
+        .then(response => {
+          this.$router.push('/ExistingPlan/' + response.data.supportItemId);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+      }
+    },
+
+    mounted(){
+      console.log('mount: fund category record component');
+      var fundCategoryId = this.$route.params.fundCategoryId; 
+
+      //Get fund category
+      axios.get('/getFundCategory', {
+        params : {
+          fundCategoryId : fundCategoryId
+        }
+      })
+      .then(response => {
+        var data = response.data;
+        console.log(data);
+
+        this.formInput.status = data.status;
+        this.formInput.fundCategoryNumber = data.fund_category_number;
+        this.formInput.planId = data.plan_id;
+        this.formInput.clientId = data.client_id;
+        // this.formInput.fundSourceId = data.fund_source_id;
+        this.formInput.pricebookId = data.pricebook_id;
+        this.formInput.categoryId = data.category_id;
+        this.formInput.totalBudget = data.total_budget;
+        this.formInput.available = data.available;
+        this.formInput.committed = data.committed;
+        this.formInput.consumed = data.consumed;
+        this.formInput.invoiced = data.invoiced;
+        this.formInput.claimed = data.claimed;
+      })
+      .catch(e => {
+        console.log(e);
+      })
+
+      //Get support item
+      axios.get('/getFundCategorySupportItems', {
+        params : {
+          fundCategoryId : fundCategoryId
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+        this.supportItems = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      })
+
+      //Get fund adjustments
+      // axios.get('/getFundAdjustments', {
+      //   params : {
+      //     fundCategoryId : fundCategoryId
+      //   }
+      // })
+      // .then(response => {
+      //   console.log(response.data);
+      //   this.fundAdjustments = response.data;
+      // })
+      // .catch(e => {
+      //   console.log(e);
+      // })
+
     }
   }
 </script>

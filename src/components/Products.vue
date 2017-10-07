@@ -24,7 +24,12 @@
         <div class="col-xs-12">
           <div class="x_panel">
             <div class="x_content">
-              <table id="datatable" class="table table-striped table-bordered">
+
+              <div id="productsTable">
+                <v-client-table :data="table.data" :columns="table.columns" :options="table.options"></v-client-table>
+              </div>
+
+              <!-- <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -47,7 +52,7 @@
                     <td>{{ product.quote }}</td>
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
             </div>
           </div>
         </div>
@@ -61,10 +66,35 @@
   import axios from 'axios';
 
   export default {
-    name: 'hello',
     data () {
       return {
-        products : []
+        // products : []
+        accounts : [],
+        table: {
+          columns: ['name','code','description','family', 'quote'],
+          data: [],
+          options: {
+            perPage : 15,
+            perPageValues : [5, 10, 15, 25, 50, 100],
+            headings: {
+                name: 'Name',
+                code: 'Code',
+                description: 'Description',
+                family: 'Family',
+                quote: 'Quote'
+            },
+            
+            texts : { 
+              count:'Showing {from} to {to} of in total {count} products', 
+              filter:'Search Products:',
+              filterPlaceholder:'', 
+              limit:'Table Size:', 
+              noResults:'No products found', 
+              page:'Page:'
+              // for dropdown pagination filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column loading:'Loading...', // First request to server defaultOption:'Select {column}' // default option for list filters }
+            }
+          }
+        }
       }
     },
 
@@ -72,7 +102,8 @@
       console.log('mount: products component');
       axios.get('/getProducts')
       .then(response => {
-        this.products = response.data;
+        //this.products = response.data;
+        this.table.data = response.data;
       })
       .catch(e => {
         console.log(e);

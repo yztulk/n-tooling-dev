@@ -164,6 +164,10 @@ export default new Router( {
 		component: ExistingPlan,
 		name: 'ExistingPlan'
 	}, {
+		path: '/ExistingPlan/:planId',
+		component: ExistingPlan,
+		name: 'ExistingPlan'
+	}, {
 		path: '/ExistingAccount',
 		component: ExistingAccount,
 		name: 'ExistingAccount'

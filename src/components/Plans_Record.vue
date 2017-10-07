@@ -35,43 +35,43 @@
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Plan Number</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="0062762">
+                  <input v-model="formInput.planNumber" type="text" class="form-control" value="0062762">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="Active">
+                  <input v-model="formInput.status" type="text" class="form-control" value="Active">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Client</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="Roy Bout">
+                  <input v-model="formInput.client" type="text" class="form-control" value="Roy Bout">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Start Date</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="02-08-2017">
+                  <input v-model="formInput.startDate" type="text" class="form-control" value="02-08-2017">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">NDIS Nr.</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="283732">
+                  <input v-model="formInput.ndisNr" type="text" class="form-control" value="283732">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">End Date</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="02-08-2018">
+                  <input v-model="formInput.endDate" type="text" class="form-control" value="02-08-2018">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Carer</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="Bep Boer">
+                  <input v-model="formInput.carer" type="text" class="form-control" value="Bep Boer">
                 </div>
               </div>
               <div class="col-md-6 form-group">
@@ -79,7 +79,7 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" class="flat">
+                      <input v-model="formInput.serviceAgreementSent" type="checkbox" class="flat">
                     </label>
                     </div>
                 </div>
@@ -98,37 +98,37 @@
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Total Budget</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$110,000" readonly="readonly">
+                  <input v-model="formInput.budgetTotalBudget" type="text" class="form-control" value="$110,000" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Available</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$90,000" readonly="readonly">
+                  <input v-model="formInput.budgetAvailable" type="text" class="form-control" value="$90,000" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Committed</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$5,000" readonly="readonly">
+                  <input v-model="formInput.budgetCommmitted" type="text" class="form-control" value="$5,000" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Consumed</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$5,000" readonly="readonly">
+                  <input v-model="formInput.budgetConsumed" type="text" class="form-control" value="$5,000" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Invoiced</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$5,000" readonly="readonly">
+                  <input v-model="formInput.budgetInvoiced" type="text" class="form-control" value="$5,000" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Claimed</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$5,000" readonly="readonly">
+                  <input v-model="formInput.budgetClaimed" type="text" class="form-control" value="$5,000" readonly="readonly">
                 </div>
               </div>
 
@@ -145,37 +145,37 @@
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Budget</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$625" readonly="readonly">
+                  <input v-model="formInput.travelBudget" type="text" class="form-control" value="$625" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Remaining</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$125" readonly="readonly">
+                  <input v-model="formInput.travelRemaining" type="text" class="form-control" value="$125" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Consumed</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$500" readonly="readonly">
+                  <input v-model="formInput.travelConsumed" type="text" class="form-control" value="$500" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Total Distribution</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="2" readonly="readonly">
+                  <input v-model="formInput.travelTotalDistribution" type="text" class="form-control" value="2" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Remaining Distribution</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="1" readonly="readonly">
+                  <input v-model="formInput.travelRemainingDistribution" type="text" class="form-control" value="1" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Travel Claim per Job</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$44.75" readonly="readonly">
+                  <input v-model="formInput.travelClaimPerJob" type="text" class="form-control" value="$44.75" readonly="readonly">
                 </div>
               </div>
 
@@ -192,14 +192,14 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Closed</label>
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" class="flat">
+                      <input v-model="formInput.closed" type="checkbox" class="flat">
                     </label>
                   </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Cancellation Reason</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
+                  <input v-model="formInput.cancellationReason" type="text" class="form-control" value="">
                 </div>
               </div>
               <span class="clearfix"></span>
@@ -311,7 +311,7 @@
             <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
               <div class="panel">
                 <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Fund Categories (3)</h4> 
+                  <h4 class="panel-title"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Fund Categories ({{fundCategories.length}})</h4> 
                 </a>
                 <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                   <div class="panel-body">
@@ -325,33 +325,32 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row"><router-link to="/ExistingFundCategory">0037287</router-link></th>
-                          <td>NDIS Managed</td>
-                          <td>Assistive Technology</td>
-                          <td>$150,000</td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><router-link to="/ExistingFundCategory">0037288</router-link></th>
-                          <td>Thrid Party Managed</td>
-                          <td>Improved Learning</td>
-                          <td>$10,000</td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><router-link to="/ExistingFundCategory">0037289</router-link></th> 
-                          <td>Thrid Party Managed</td>
-                          <td>Improved Daily Living Skills</td>
-                          <td>$5,000</td>
+                        <tr v-for="fundCategory in fundCategories">
+                          <td>
+                            <router-link :to="{ name: 'ExistingFundCategory', params: {fundCategoryId : fundCategory.fund_category_number}}">
+                              {{ fundCategory.fund_category_number }}
+                            </router-link>
+                          </td>
+                          <td>TODO</td>
+                          <td>TODO</td>
+                          <td>{{ fundCategory.total_budget }}</td>
                         </tr>
                       </tbody>
                     </table>
-                    <router-link to="/NewFundCategory"><button type="submit" class="btn btn-default">New Fund Category</button></router-link>
+                    <!-- <router-link to="/NewFundCategory">
+                      <button type="submit" class="btn btn-default">New Fund Category</button>
+                    </router-link> -->
+
+                    <router-link :to="{ name: 'NewFundCategory', params: {planId : formInput.planNumber}}">
+                      <button type="submit" class="btn btn-default">New Fund Category</button>
+                    </router-link>
+
                   </div>
                 </div>
               </div>
               <div class="panel">
                 <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Goals (3)</h4>
+                  <h4 class="panel-title"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> Goals ({{goals.length}})</h4>
                 </a>
                 <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                   <div class="panel-body">
@@ -361,69 +360,19 @@
                           <th>#</th>
                           <th>Source</th>
                           <th>Type</th>
-                          <th>Priority</th>
+                          <th>Status</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">0018219</th>
-                          <td>Aspect</td>
-                          <td>1st Goal</td>
-                          <td>Medium</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018220</th>
-                          <td>Aspect</td>
-                          <td>2nd Goal</td>
-                          <td>Medium</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018221</th>
-                          <td>NDIS</td>
-                          <td>Long Term</td>
-                          <td>High</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018219</th>
-                          <td>Aspect</td>
-                          <td>1st Goal</td>
-                          <td>Medium</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018219</th>
-                          <td>Aspect</td>
-                          <td>1st Goal</td>
-                          <td>Medium</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018220</th>
-                          <td>Aspect</td>
-                          <td>2nd Goal</td>
-                          <td>Medium</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018221</th>
-                          <td>NDIS</td>
-                          <td>Long Term</td>
-                          <td>High</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018219</th>
-                          <td>Aspect</td>
-                          <td>1st Goal</td>
-                          <td>Medium</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018220</th>
-                          <td>Aspect</td>
-                          <td>2nd Goal</td>
-                          <td>Medium</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">0018221</th>
-                          <td>NDIS</td>
-                          <td>Long Term</td>
-                          <td>High</td>
+                       <tr v-for="goal in goals">
+                          <td>
+                            <router-link :to="{ name: 'ExistingGoal', params: {goalId : goal.goal_number}}">
+                              {{ goal.goal_number }}
+                            </router-link>
+                          </td>
+                          <td>{{ goal.source }}</td>
+                          <td>{{ goal.type }}</td>
+                          <td>{{ goal.status }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -467,12 +416,125 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'hello',
     data () {
       return {
-        
+        formInput : {
+          planNumber: '',
+          status: '',
+          startDate: '',
+          endDate: '',
+          client: '',
+          ndisNr: '',
+          carer: '',
+          serviceAgreementSent: '',
+          serviceAgreementSigned: '',
+          budgetTotalBudget: '',
+          budgetAvailable: '',
+          budgetCommmitted: '',
+          budgetInvoiced: '',
+          budgetConsumed: '',
+          budgetClaimed: '',
+          travelBudget: '',
+          travelConsumed: '',
+          travelRemainingDistribution: '',
+          travelRemaining: '',
+          travelTotalDistribution: '',
+          travelClaimPerJob: '',
+          closed: '',
+          cancellationReason: '',
+          description: ''
+        },
+
+        fundCategories: [],
+        goals: []
       }
+    },
+
+    methods : {
+      savePlan: function(){
+        axios.post('/insertPlan', this.formInput)
+        .then(response => {
+          this.$router.push('/ExistingPlan/' + response.data.supportItemId);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+      }
+    },
+
+    mounted(){
+      var planId = this.$route.params.planId; 
+
+      //Get plan
+      axios.get('/getPlan', {
+        params : {
+          planId : planId
+        }
+      })
+      .then(response => {
+        var data = response.data;
+        console.log(data);
+
+        this.formInput.planNumber = data.plan_number;
+        this.formInput.status = data.status;
+        this.formInput.startDate = data.start_date;
+        this.formInput.endDate = data.end_date;
+        //this.formInput.client = data.client;
+        //this.formInput.ndisNr = data.ndisNr;
+        //this.formInput.carer = data.carer;
+        //this.formInput.budgetAvailable = data.budget_available;
+        this.formInput.serviceAgreementSent = data.service_agreement_sent;
+        this.formInput.serviceAgreementSigned = data.service_agreement_signed;
+        this.formInput.budgetTotalBudget = data.budget_total_budget;
+        this.formInput.budgetCommmitted = data.budget_committed;
+        this.formInput.budgetInvoiced = data.budget_invoiced;
+        this.formInput.budgetConsumed = data.budget_consumed;
+        this.formInput.budgetClaimed = data.budget_claimed;
+        this.formInput.travelBudget = data.travel_budget;
+        this.formInput.travelConsumed = data.travel_consumed;
+        this.formInput.travelRemainingDistribution = data.travel_remaining_distribution;
+        this.formInput.travelRemaining = data.travel_remaining;
+        this.formInput.travelTotalDistribution = data.travel_total_distribution;
+        this.formInput.travelClaimPerJob = data.travel_claim_per_job;
+        this.formInput.closed = data.closed;
+        this.formInput.cancellationReason = data.cancellation_reason;
+        this.formInput.description = data.description;
+      })
+      .catch(e => {
+        console.log(e);
+      })
+
+      //Get fund categories
+      axios.get('/getFundCategories', {
+        params : {
+          planId : planId
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+        this.fundCategories = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      })
+
+      //Get goals
+      axios.get('/getGoals', {
+        params : {
+          planId : planId
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+        this.goals = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      })
+
     }
   }
 </script>

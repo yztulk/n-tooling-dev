@@ -95,6 +95,10 @@ const pool = new Pool( {
 	port: 5432
 } );
 
+/**
+ * BEGIN APIs
+ */
+
 app.get( '/queryAccount', function( req, res ) {
 	console.log( '/queryAccount' );
 	var accountId = req.param( 'accountId' );
@@ -246,6 +250,83 @@ app.get( '/getSupportItem', function( req, res ) {
 		res.send( resQuery.rows[ 0 ] );
 	} );
 } );
+
+app.get( '/getPlans', function( req, res ) {
+	console.log( '/getPlans' );
+	pool.query( 'SELECT * FROM plan ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
+app.get( '/getPlan', function( req, res ) {
+	console.log( '/getPlan' );
+	var planId = req.param( 'planId' );
+
+	var query = "SELECT * FROM plan WHERE plan_number = '" + planId + "' LIMIT 1";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows[ 0 ] );
+	} );
+} );
+
+app.get( '/getFundCategories', function( req, res ) {
+	console.log( '/getFundCategories' );
+	var planId = req.param( 'planId' );
+
+	var query = "SELECT * FROM fund_category WHERE plan_id = '" + planId + "';";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
+app.get( '/getFundCategory', function( req, res ) {
+	console.log( '/getFundCategory' );
+	var fundCategoryId = req.param( 'fundCategoryId' );
+
+	var query = "SELECT * FROM fund_category WHERE fund_category_number = '" + fundCategoryId + "' LIMIT 1";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows[ 0 ] );
+	} );
+} );
+
+app.get( '/getGoals', function( req, res ) {
+	console.log( '/getGoals' );
+	var planId = req.param( 'planId' );
+
+	var query = "SELECT * FROM goal WHERE plan_id = '" + planId + "';";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
+app.get( '/getFundCategorySupportItems', function( req, res ) {
+	console.log( '/getFundCategorySupportItems' );
+	var fundCategoryId = req.param( 'fundCategoryId' );
+
+	var query = "SELECT * FROM support_item WHERE fund_category_id = '" + fundCategoryId + "';";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
+app.get( '/getSupportItemJobs', function( req, res ) {
+	console.log( '/getSupportItemJobs' );
+	var supportItemId = req.param( 'supportItemId' );
+
+	var query = "SELECT * FROM job WHERE support_item_id = '" + supportItemId + "';";
+
+	pool.query( query, ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
+/**
+ * END APIs
+ */
 
 console.log( '> Starting dev server...' )
 devMiddleware.waitUntilValid( () => {

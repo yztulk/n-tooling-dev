@@ -257,7 +257,7 @@
             <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
               <div class="panel">
                 <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Jobs (3)</h4>
+                  <h4 class="panel-title"><span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Jobs ({{jobs.length}})</h4>
                 </a>
                 <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                   <div class="panel-body">
@@ -271,7 +271,18 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <tr v-for="job in jobs">
+                          <td>
+                            <router-link :to="{ name: 'ExistingJob', params: {jobId : job.job_number}}">
+                              {{ job.job_number }}
+                            </router-link>
+                          </td>
+                          <td>TODO</td>
+                          <td>TODO</td>
+                          <td>{{ job.status }}</td>
+                        </tr>
+
+                        <!-- <tr>
                           <th scope="row">0037287</th>
                           <td>Jan Boer</td>
                           <td>07-28-2017</td>
@@ -288,7 +299,7 @@
                           <td>Jan Boer</td>
                           <td>05-28-2017</td>
                           <td>Complete</td>
-                        </tr>
+                        </tr> -->
                       </tbody>
                     </table>
                     <router-link to="/NewJob"><button type="submit" class="btn btn-default">Add Job</button></router-link>
@@ -359,7 +370,8 @@
           claimed: '',
           lateCancellationCount: '',
           noShowCount: ''
-        }
+        },
+        jobs: []
       }
     },
 
@@ -376,9 +388,12 @@
     },
 
     mounted(){
+      var supportItemId = this.$route.params.supportItemId;
+
+      //Get support item
       axios.get('/getSupportItem', {
         params : {
-          supportItemId : this.$route.params.supportItemId  
+          supportItemId : supportItemId
         }
       })
       .then(response => {
@@ -399,11 +414,25 @@
         this.formInput.claimed  = data.claimed;
         this.formInput.lateCancellationCount  = data.late_cancellation_count;
         this.formInput.noShowCount  = data.no_show_count;
-
       })
       .catch(e => {
         console.log(e);
       })
+
+      //Get jobs
+      axios.get('/getSupportItemJobs', {
+        params : {
+          supportItemId : supportItemId
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+        this.jobs = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      })
+
     }
 
   }

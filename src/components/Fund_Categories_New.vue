@@ -33,7 +33,9 @@
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Plan</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <router-link to="/ExistingPlan" class="btn">0062762</router-link>
+                  <router-link :to="{ name: 'ExistingPlan', params: {planId : formInput.planId}}" class="btn">
+                    {{formInput.planId}}
+                  </router-link>
                 </div>
               </div>
               <div class="col-md-6 form-group">
@@ -45,7 +47,7 @@
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Client</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <router-link to="/ExistingContact" class="btn">Roy Bout</router-link>
+                  <router-link to="/ExistingContact" class="btn">{{formInput.clientId}}</router-link>
                 </div>
               </div>
               <div class="col-md-6 form-group">
@@ -219,12 +221,51 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'hello',
     data () {
       return {
-        
+        formInput : {
+          planId: '',
+          clientId: ''
+        }
       }
+    },
+
+    methods : {
+      saveFundCategory: function(){
+        axios.post('/saveFundCategory', this.formInput)
+        .then(response => {
+          this.$router.push('/ExistingPlan/' + response.data.supportItemId);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+      }
+    },
+
+    mounted(){
+      console.log('mount: fund category record component');
+      var planId = this.$route.params.planId;
+
+      //Get fund category
+      axios.get('/getPlan', {
+        params : {
+          planId : planId
+        }
+      })
+      .then(response => {
+        var data = response.data;
+        console.log(data);
+
+        this.formInput.planId = data.plan_number;
+        // this.formInput.clientId = data.client_number;
+
+      })
+      .catch(e => {
+        console.log(e);
+      })
     }
   }
 </script>
