@@ -207,6 +207,10 @@ export default new Router( {
 		component: ExistingFundCategory,
 		name: 'ExistingFundCategory'
 	}, {
+		path: '/ExistingFundCategory/:fundCategoryId',
+		component: ExistingFundCategory,
+		name: 'ExistingFundCategory'
+	}, {
 		path: '/NewFundCategory',
 		component: NewFundCategory,
 		name: 'NewFundCategory'

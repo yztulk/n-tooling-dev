@@ -10,7 +10,7 @@
           <div class="input-group">
             <div class="btn-group">
               <button type="button" class="btn btn-default">Cancel</button>
-              <button type="button" class="btn btn-default">Save</button>
+              <button v-on:click="saveFundCategory" type="button" class="btn btn-default">Save</button>
             </div>
           </div>
         </div>
@@ -206,7 +206,7 @@
                 </div>
                 <div class="form-group">
                   <!-- <div class="col-xs-12 col-md-offset-3"> -->
-                    <button type="button" class="btn btn-primary">Save Account</button>
+                    <button v-on:click="saveFundCategory" type="button" class="btn btn-primary">Save Fund Category</button>
                   <!-- </div> -->
                 </div>
 
@@ -235,9 +235,11 @@
 
     methods : {
       saveFundCategory: function(){
-        axios.post('/saveFundCategory', this.formInput)
+        axios.post('/insertFundCategory', this.formInput)
         .then(response => {
-          this.$router.push('/ExistingPlan/' + response.data.supportItemId);
+          console.log(response);
+          console.log(response.data.fund_category_number);
+          this.$router.push('/ExistingFundCategory/' + response.data.fundCategoryNumber);
         })
         .catch(e => {
           console.log(e);

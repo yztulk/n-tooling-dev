@@ -275,10 +275,10 @@ app.post( '/insertPlan', function( req, res ) {
 
 	var insertStatement = "INSERT INTO plan (status, start_date, end_date, service_agreement_sent) ";
 	insertStatement += "VALUES (";
-	insertStatement += transforEmptyInput( body.status );
-	insertStatement += ", " + transforEmptyInput( body.startDate );
-	insertStatement += ", " + transforEmptyInput( body.endDate )
-	insertStatement += ", " + transforEmptyInput( body.serviceAgreementSent ) + ") "
+	insertStatement += transformInput( body.status );
+	insertStatement += ", " + transformInput( body.startDate );
+	insertStatement += ", " + transformInput( body.endDate );
+	insertStatement += ", " + transformInput( body.serviceAgreementSent ) + ") ";
 	insertStatement += "RETURNING plan_number;";
 	console.log( insertStatement );
 
@@ -315,6 +315,29 @@ app.get( '/getFundCategory', function( req, res ) {
 	pool.query( query, ( err, resQuery ) => {
 		res.send( resQuery.rows[ 0 ] );
 	} );
+} );
+
+app.post( '/insertFundCategory', function( req, res ) {
+	console.log( '/insertFundCategory' );
+	var body = req.body;
+
+	var insertStatement = "INSERT INTO fund_category (plan_id) ";
+	insertStatement += "VALUES (";
+	insertStatement += transformInput( body.planId ) + ") ";
+	insertStatement += "RETURNING fund_category_number;";
+	console.log( insertStatement );
+
+	pool.query( insertStatement, ( err, result ) => {
+		if ( err ) {
+			console.log( 'An error occured while inserting the fund category in the database' );
+			console.log( err );
+		} else {
+			res.send( {
+				fundCategoryNumber: result.rows[ 0 ].fund_category_number
+			} );
+		}
+	} );
+
 } );
 
 app.get( '/getGoals', function( req, res ) {
@@ -361,7 +384,7 @@ app.get( '/getPricebooks', function( req, res ) {
  * END APIs
  */
 
-function transforEmptyInput( input ) {
+function transformInput( input ) {
 	if ( input.length === 0 ) {
 		return 'null';
 	} else {
