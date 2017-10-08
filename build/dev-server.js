@@ -269,6 +269,32 @@ app.get( '/getPlan', function( req, res ) {
 	} );
 } );
 
+app.post( '/insertPlan', function( req, res ) {
+	console.log( '/insertPlan' );
+	var body = req.body;
+
+	var insertStatement = "INSERT INTO plan (status, start_date, end_date, service_agreement_sent) ";
+	insertStatement += "VALUES (";
+	insertStatement += transforEmptyInput( body.status );
+	insertStatement += ", " + transforEmptyInput( body.startDate );
+	insertStatement += ", " + transforEmptyInput( body.endDate )
+	insertStatement += ", " + transforEmptyInput( body.serviceAgreementSent ) + ") "
+	insertStatement += "RETURNING plan_number;";
+	console.log( insertStatement );
+
+	pool.query( insertStatement, ( err, result ) => {
+		if ( err ) {
+			console.log( 'An error occured while inserting the plan in the database' );
+			console.log( err );
+		} else {
+			res.send( {
+				planNumber: result.rows[ 0 ].plan_number
+			} );
+		}
+	} );
+
+} );
+
 app.get( '/getFundCategories', function( req, res ) {
 	console.log( '/getFundCategories' );
 	var planId = req.param( 'planId' );
@@ -334,6 +360,14 @@ app.get( '/getPricebooks', function( req, res ) {
 /**
  * END APIs
  */
+
+function transforEmptyInput( input ) {
+	if ( input.length === 0 ) {
+		return 'null';
+	} else {
+		return "'" + input + "'";
+	}
+}
 
 console.log( '> Starting dev server...' )
 devMiddleware.waitUntilValid( () => {

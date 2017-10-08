@@ -10,7 +10,7 @@
             <div class="input-group">
               <div class="btn-group">
                 <button type="button" class="btn btn-default">Cancel</button>
-                <button type="button" class="btn btn-default">Save</button>
+                <button v-on:click="savePlan" type="button" class="btn btn-default">Save</button>
               </div>
             </div>
           </div>
@@ -166,7 +166,7 @@
                 </div>
                 <div class="form-group">
                   <!-- <div class="col-xs-12 col-md-offset-3"> -->
-                    <button type="button" class="btn btn-primary">Save Plan</button>
+                    <button v-on:click="savePlan" type="button" class="btn btn-primary">Save Plan</button>
                   <!-- </div> -->
                 </div>
 
@@ -181,6 +181,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     data () {
       return {
@@ -194,10 +196,10 @@
     },
 
     methods : {
-      saveJob: function(){
+      savePlan: function(){
         axios.post('/insertPlan', this.formInput)
         .then(response => {
-          this.$router.push('/ExistingPlan/' + response.data.planId);
+          this.$router.push('/ExistingPlan/' + response.data.planNumber);
         })
         .catch(e => {
           console.log(e);
