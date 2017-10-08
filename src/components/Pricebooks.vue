@@ -1,5 +1,5 @@
 <template>
-  <div id="products">
+  <div id="pricebooks">
     <div class="">
       <div class="page-title">
         <div class="title_left">
@@ -9,7 +9,7 @@
           <div class="pull-right">
             <div class="input-group">
               <div class="btn-group">
-                <router-link to="/NewProduct"><button type="button" class="btn btn-default">New</button></router-link>
+                <router-link to="/NewPricebook"><button type="button" class="btn btn-default">New</button></router-link>
                 <button type="button" class="btn btn-default">Import</button>
                 <button type="button" class="btn btn-default">Reports</button>
               </div>
@@ -24,35 +24,9 @@
         <div class="col-xs-12">
           <div class="x_panel">
             <div class="x_content">
-
-              <div id="productsTable">
+              <div id="pricebooksTable">
                 <v-client-table :data="table.data" :columns="table.columns" :options="table.options"></v-client-table>
               </div>
-
-              <!-- <table id="datatable" class="table table-striped table-bordered">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Code</th>
-                    <th>Description</th>
-                    <th>Product Family</th>
-                    <th>Quote</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="product in products">
-                    <td>
-                      <router-link :to="{ name: 'ExistingProduct', params: {productCode : product.code}}">
-                        {{ product.name }}
-                      </router-link>
-                    </td>
-                    <td>{{ product.code }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.family }}</td>
-                    <td>{{ product.quote }}</td>
-                  </tr>
-                </tbody>
-              </table> -->
             </div>
           </div>
         </div>
@@ -68,28 +42,25 @@
   export default {
     data () {
       return {
-        // products : []
-        accounts : [],
         table: {
-          columns: ['name','code','description','family', 'quote'],
+          columns: ['name','description','isActive', 'isStandardPricebook'],
           data: [],
           options: {
             perPage : 15,
             perPageValues : [5, 10, 15, 25, 50, 100],
             headings: {
                 name: 'Name',
-                code: 'Code',
                 description: 'Description',
-                family: 'Family',
-                quote: 'Quote'
+                isActive: 'Active',
+                isStandardPricebook: 'Is Standard Price Book'
             },
             
             texts : { 
-              count:'Showing {from} to {to} of in total {count} products', 
-              filter:'Search Products:',
+              count:'Showing {from} to {to} of in total {count} price books', 
+              filter:'Search Price books:',
               filterPlaceholder:'', 
               limit:'Table Size:', 
-              noResults:'No products found', 
+              noResults:'No price books found', 
               page:'Page:'
               // for dropdown pagination filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column loading:'Loading...', // First request to server defaultOption:'Select {column}' // default option for list filters }
             }
@@ -99,10 +70,9 @@
     },
 
     mounted(){
-      console.log('mount: products component');
-      axios.get('/getProducts')
+      console.log('mount: pricebook component');
+      axios.get('/getPricebooks')
       .then(response => {
-        //this.products = response.data;
         this.table.data = response.data;
       })
       .catch(e => {

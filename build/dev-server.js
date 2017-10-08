@@ -324,6 +324,13 @@ app.get( '/getSupportItemJobs', function( req, res ) {
 	} );
 } );
 
+app.get( '/getPricebooks', function( req, res ) {
+	console.log( '/getPricebooks' );
+	pool.query( 'SELECT * FROM price_book ORDER BY name', ( err, resQuery ) => {
+		res.send( resQuery.rows );
+	} );
+} );
+
 /**
  * END APIs
  */
