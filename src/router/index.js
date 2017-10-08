@@ -59,6 +59,10 @@ export default new Router( {
 		component: NewSupportItem,
 		name: 'NewSupportItem'
 	}, {
+		path: '/NewSupportItem/:fundCategoryId',
+		component: NewSupportItem,
+		name: 'NewSupportItem'
+	}, {
 		path: '/ExistingSupportItem',
 		component: ExistingSupportItem,
 		name: 'ExistingSupportItem'

@@ -104,7 +104,7 @@ app.get( '/queryAccount', function( req, res ) {
 	var accountId = req.param( 'accountId' );
 	console.log( 'accountId is: ' + accountId );
 
-	var query = 'SELECT * FROM Account WHERE account_id = ' + accountId + ' LIMIT 1';
+	var query = 'SELECT * FROM Account WHERE account_id = ' + accountId + ' LIMIT 1;';
 
 	//pool.query( 'SELECT * FROM Account WHERE account_id = 35 LIMIT 1', ( err, resQuery ) => {
 	pool.query( query, ( err, resQuery ) => {
@@ -114,7 +114,7 @@ app.get( '/queryAccount', function( req, res ) {
 
 app.get( '/query', function( req, res ) {
 	console.log( '/query all accounts' );
-	pool.query( 'SELECT * FROM Account ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+	pool.query( 'SELECT * FROM Account ORDER BY row_created DESC NULLS LAST;', ( err, resQuery ) => {
 		res.send( resQuery.rows );
 	} );
 } );
@@ -125,7 +125,7 @@ app.post( '/insertAccount', function( req, res ) {
 
 	var insertStatement = "INSERT INTO Account (Name, Street_Name, Street_Number, City, Postal_Code, Country, State) ";
 	insertStatement += "VALUES ('" + body.name + "', '" + body.streetName + "', '" + body.streetNameNumber + "', '" + body.city + "', '" + body.postalCode + "', '" + body.country + "', '" + body.state + "') ";
-	insertStatement += "RETURNING account_id";
+	insertStatement += "RETURNING account_id;";
 
 	pool.query( insertStatement, ( err, result ) => {
 		res.send( {
@@ -137,7 +137,7 @@ app.post( '/insertAccount', function( req, res ) {
 
 app.get( '/getProducts', function( req, res ) {
 	console.log( '/getProducts' );
-	pool.query( 'SELECT * FROM product ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+	pool.query( 'SELECT * FROM product ORDER BY row_created DESC NULLS LAST;', ( err, resQuery ) => {
 		res.send( resQuery.rows );
 	} );
 } );
@@ -146,7 +146,7 @@ app.get( '/getProduct', function( req, res ) {
 	console.log( '/getProduct' );
 	var productCode = req.param( 'productCode' );
 
-	var query = "SELECT * FROM product WHERE code = '" + productCode + "' LIMIT 1";
+	var query = "SELECT * FROM product WHERE code = '" + productCode + "' LIMIT 1;";
 
 	pool.query( query, ( err, resQuery ) => {
 		res.send( resQuery.rows[ 0 ] );
@@ -155,7 +155,7 @@ app.get( '/getProduct', function( req, res ) {
 
 app.get( '/getJobs', function( req, res ) {
 	console.log( '/getJobs' );
-	pool.query( 'SELECT * FROM job ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+	pool.query( 'SELECT * FROM job ORDER BY row_created DESC NULLS LAST;', ( err, resQuery ) => {
 		//res.send( resQuery.rows );
 		res.send( resQuery.rows );
 	} );
@@ -165,7 +165,7 @@ app.get( '/getJob', function( req, res ) {
 	console.log( '/getJob' );
 	var jobId = req.param( 'jobId' );
 
-	var query = "SELECT * FROM job WHERE job_number = '" + jobId + "' LIMIT 1";
+	var query = "SELECT * FROM job WHERE job_number = '" + jobId + "' LIMIT 1;";
 
 	pool.query( query, ( err, resQuery ) => {
 		res.send( resQuery.rows[ 0 ] );
@@ -175,7 +175,7 @@ app.get( '/getJob', function( req, res ) {
 app.get( '/getJobCount', function( req, res ) {
 	console.log( '/getJobCount' );
 
-	var query = "SELECT count(*) FROM job";
+	var query = "SELECT count(*) FROM job;";
 
 	pool.query( query, ( err, resQuery ) => {
 		res.send( resQuery.rows[ 0 ] );
@@ -205,20 +205,19 @@ app.post( '/insertJob', function( req, res ) {
 	//Nullify integer fields if blank
 	if ( body.duration.length === 0 ) body.duration = 'null';
 
-	var insertStatement = "INSERT INTO Job (job_number, support_item_id, travel_cost, type, address, duration, timezone, general_ledger_code, list_price, status) "; //, quantity, reschedule, travel_billable, resource_hours_worked, cancellation_reason, cancellation_comment) ";
+	var insertStatement = "INSERT INTO Job (support_item_id, travel_cost, type, address, duration, timezone, general_ledger_code, list_price, status) "; //, quantity, reschedule, travel_billable, resource_hours_worked, cancellation_reason, cancellation_comment) ";
 	insertStatement += "VALUES (";
-	insertStatement += "'" + body.jobNumber + "', ";
-	//insertStatement += "'SI-12', ";
-	insertStatement += "'" + body.supportItemId + "', ";
-	insertStatement += "'" + body.travelCost + "', ";
-	insertStatement += "'" + body.type + "', ";
-	insertStatement += "'" + body.address + "', ";
-	insertStatement += body.duration + ", ";
-	insertStatement += "'" + body.timezone + "', ";
-	insertStatement += "'" + body.generalLedgerCode + "', ";
-	insertStatement += "'" + body.listPrice + "', ";
-	insertStatement += "'" + body.status + "')";
-	insertStatement += " RETURNING job_number";
+	insertStatement += transformInput( body.supportItemId );
+	insertStatement += ", " + transformInput( body.travelCost );
+	insertStatement += ", " + transformInput( body.type );
+	insertStatement += ", " + transformInput( body.address );
+	insertStatement += ", " + transformInput( body.duration );
+	insertStatement += ", " + transformInput( body.timezone );
+	insertStatement += ", " + transformInput( body.generalLedgerCode );
+	insertStatement += ", " + transformInput( body.listPrice );
+	insertStatement += ", " + transformInput( body.status ) + ") ";;
+	insertStatement += " RETURNING job_number;";
+	console.log( insertStatement );
 
 	pool.query( insertStatement, ( err, result ) => {
 		if ( err ) {
@@ -235,7 +234,7 @@ app.post( '/insertJob', function( req, res ) {
 
 app.get( '/getSupportItems', function( req, res ) {
 	console.log( '/getSupportItems' );
-	pool.query( 'SELECT * FROM support_item ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+	pool.query( 'SELECT * FROM support_item ORDER BY row_created DESC NULLS LAST;', ( err, resQuery ) => {
 		res.send( resQuery.rows );
 	} );
 } );
@@ -244,16 +243,40 @@ app.get( '/getSupportItem', function( req, res ) {
 	console.log( '/getSupportItem' );
 	var supportItemId = req.param( 'supportItemId' );
 
-	var query = "SELECT * FROM support_item WHERE support_item_number = '" + supportItemId + "' LIMIT 1";
+	var query = "SELECT * FROM support_item WHERE support_item_number = '" + supportItemId + "' LIMIT 1;";
 
 	pool.query( query, ( err, resQuery ) => {
 		res.send( resQuery.rows[ 0 ] );
 	} );
 } );
 
+app.post( '/insertSupportItem', function( req, res ) {
+	console.log( '/insertSupportItem' );
+	var body = req.body;
+
+	var insertStatement = "INSERT INTO support_item (fund_category_id, quantity) ";
+	insertStatement += "VALUES (";
+	insertStatement += transformInput( body.fundCategoryId );
+	insertStatement += ", " + transformInput( body.quantity ) + ") ";
+	insertStatement += "RETURNING support_item_number;";
+	console.log( insertStatement );
+
+	pool.query( insertStatement, ( err, result ) => {
+		if ( err ) {
+			console.log( 'An error occured while inserting the support item in the database' );
+			console.log( err );
+		} else {
+			res.send( {
+				supportItemNumber: result.rows[ 0 ].support_item_number
+			} );
+		}
+	} );
+
+} );
+
 app.get( '/getPlans', function( req, res ) {
 	console.log( '/getPlans' );
-	pool.query( 'SELECT * FROM plan ORDER BY row_created DESC NULLS LAST', ( err, resQuery ) => {
+	pool.query( 'SELECT * FROM plan ORDER BY row_created DESC NULLS LAST;', ( err, resQuery ) => {
 		res.send( resQuery.rows );
 	} );
 } );
@@ -262,7 +285,7 @@ app.get( '/getPlan', function( req, res ) {
 	console.log( '/getPlan' );
 	var planId = req.param( 'planId' );
 
-	var query = "SELECT * FROM plan WHERE plan_number = '" + planId + "' LIMIT 1";
+	var query = "SELECT * FROM plan WHERE plan_number = '" + planId + "' LIMIT 1;";
 
 	pool.query( query, ( err, resQuery ) => {
 		res.send( resQuery.rows[ 0 ] );
@@ -310,7 +333,7 @@ app.get( '/getFundCategory', function( req, res ) {
 	console.log( '/getFundCategory' );
 	var fundCategoryId = req.param( 'fundCategoryId' );
 
-	var query = "SELECT * FROM fund_category WHERE fund_category_number = '" + fundCategoryId + "' LIMIT 1";
+	var query = "SELECT * FROM fund_category WHERE fund_category_number = '" + fundCategoryId + "' LIMIT 1;";
 
 	pool.query( query, ( err, resQuery ) => {
 		res.send( resQuery.rows[ 0 ] );
@@ -375,7 +398,7 @@ app.get( '/getSupportItemJobs', function( req, res ) {
 
 app.get( '/getPricebooks', function( req, res ) {
 	console.log( '/getPricebooks' );
-	pool.query( 'SELECT * FROM price_book ORDER BY name', ( err, resQuery ) => {
+	pool.query( 'SELECT * FROM price_book ORDER BY name;', ( err, resQuery ) => {
 		res.send( resQuery.rows );
 	} );
 } );
@@ -385,6 +408,7 @@ app.get( '/getPricebooks', function( req, res ) {
  */
 
 function transformInput( input ) {
+	console.log( input );
 	if ( input.length === 0 ) {
 		return 'null';
 	} else {

@@ -10,7 +10,7 @@
           <div class="input-group">
             <div class="btn-group">
               <button type="button" class="btn btn-default">Cancel</button>
-              <button type="button" class="btn btn-default">Save</button>
+              <button v-on:click="saveSupportItem" type="button" class="btn btn-default">Save</button>
             </div>
           </div>
         </div>
@@ -31,113 +31,23 @@
               <br />
               <form class="form-horizontal form-label-left">
                 <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Number</label>
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Fund Category</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="SI-007872">
+                    <router-link :to="{ name: 'ExistingFundCategory', params: {fundCategoryId : formInput.fundCategoryId}}" class="btn">
+                      {{formInput.fundCategoryId}}
+                    </router-link>
                   </div>
                 </div>
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Product</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="">
+                    <input v-model="formInput.product" type="text" class="form-control" value="">
                   </div>
                 </div>
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Fund Category</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="">
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Quantity of Measure</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="" readonly="readonly">
-                  </div>
-                </div>
-
-                <span class="clearfix"></span>
-
-                <br />
-                <div class="x_title">
-                  <h2>Quanity and Prices</h2> 
-                  <div class="clearfix"></div>
-                </div>
-                <br />
-
                 <div class="col-md-6 form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Quantity</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="">
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">List Price</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$" readonly="readonly">
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Sale Price</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$">
-                  </div>
-                </div>
-
-                <span class="clearfix"></span>
-
-                <br />
-                <div class="x_title">
-                  <h2>Financials</h2> 
-                  <div class="clearfix"></div>
-                </div>
-                <br />
-
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Committed</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$" readonly="readonly">
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Consumed</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$" readonly="readonly">
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Invoiced</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$" readonly="readonly">
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Claimed</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="$" readonly="readonly">
-                  </div>
-                </div>
-
-                <span class="clearfix"></span>
-
-                <br />
-                <div class="x_title">
-                  <h2>Job Information</h2> 
-                  <div class="clearfix"></div>
-                </div>
-                <br />
-
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Late Cancellation Count</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="" readonly="readonly">
-                  </div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">No Show Count</label>
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control" value="" readonly="readonly">
+                    <input v-model="formInput.quantity" type="text" class="form-control" value="">
                   </div>
                 </div>
 
@@ -230,7 +140,7 @@
                   </div>
                   <div class="form-group">
                     <!-- <div class="col-xs-12 col-md-offset-3"> -->
-                      <button type="button" class="btn btn-primary">Save Support Item</button>
+                      <button v-on:click="saveSupportItem" type="button" class="btn btn-primary">Save Support Item</button>
                     <!-- </div> -->
                   </div>
 
@@ -245,12 +155,34 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    name: 'hello',
     data () {
       return {
-        
+        formInput : {
+          fundCategoryId: '',
+          product: '',
+          quantity: ''
+        }
       }
+    },
+
+    methods : {
+      saveSupportItem: function(){
+        axios.post('/insertSupportItem', this.formInput)
+        .then(response => {
+          this.$router.push('/ExistingSupportItem/' + response.data.supportItemNumber);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+      }
+    },
+
+    mounted(){
+      console.log('mount: support item record component');
+      this.formInput.fundCategoryId = this.$route.params.fundCategoryId;
     }
   }
 </script>

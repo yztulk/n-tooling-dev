@@ -253,7 +253,10 @@
                         </tr>
                       </tbody>
                     </table>
-                    <router-link to="/NewSupportItem"><button type="submit" class="btn btn-default">New Support Item</button></router-link>
+                    <!-- <router-link to="/NewSupportItem"><button type="submit" class="btn btn-default">New Support Item</button></router-link> -->
+                    <router-link :to="{ name: 'NewSupportItem', params: {fundCategoryId : formInput.fundCategoryNumber}}">
+                      <button type="submit" class="btn btn-default">New Support Item</button>
+                    </router-link>
                   </div>
                 </div>
               </div>

@@ -237,8 +237,6 @@
       saveFundCategory: function(){
         axios.post('/insertFundCategory', this.formInput)
         .then(response => {
-          console.log(response);
-          console.log(response.data.fund_category_number);
           this.$router.push('/ExistingFundCategory/' + response.data.fundCategoryNumber);
         })
         .catch(e => {

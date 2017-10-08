@@ -337,10 +337,6 @@
                         </tr>
                       </tbody>
                     </table>
-                    <!-- <router-link to="/NewFundCategory">
-                      <button type="submit" class="btn btn-default">New Fund Category</button>
-                    </router-link> -->
-
                     <router-link :to="{ name: 'NewFundCategory', params: {planId : formInput.planNumber}}">
                       <button type="submit" class="btn btn-default">New Fund Category</button>
                     </router-link>
