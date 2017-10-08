@@ -1,16 +1,16 @@
 <template>
-  <div id="existingAccount">
+  <div id="existingProduct">
 
     <div class="page-title">
       <div class="title_left">
-        <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><router-link to="/Jobs"> Jobs </router-link>> {{formInput.jobNumber}}</h3>
+        <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span><router-link to="/Products"> Price Book</router-link> > Exercice physiology</h3>
       </div>
 
       <div class="title_right">
         <div class="pull-right">
           <div class="input-group">
             <div class="btn-group">
-              <router-link to="/NewJob"><button type="button" class="btn btn-default">New</button></router-link>
+              <router-link to="/NewProduct"><button type="button" class="btn btn-default">New</button></router-link>
               <button type="button" class="btn btn-default">Clone</button>
               <button type="button" class="btn btn-default">Delete</button>
             </div>
@@ -26,60 +26,50 @@
         <div class="x_panel">
 
           <div class="x_title">
-            <h2>Job Information</h2> 
-            
+            <h2>Basic Details</h2> 
             <div class="clearfix"></div>
           </div>
+
           <div class="x_content">
             <br />
-            
             <form class="form-horizontal form-label-left">
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Job Number</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Name</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <!-- <input v-model="formInput.jobNumber" type="text" class="form-control" value=""> -->
-                  <p class="btn">{{formInput.jobNumber}}</p> 
+                  <input v-model="formInput.name" type="text" class="form-control" value="Exercice physiology">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">List Price</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Active</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.listPrice" type="text" class="form-control" value="">
+                  <input v-model="formInput.active" type="text" class="form-control" value="Active">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Support Item</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Code</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <!-- <router-link to="/ExistingSupportItem" class="btn">{{formInput.supportItemId}}</router-link> -->
-                      <router-link :to="{ name: 'ExistingSupportItem', params: {supportItemId : formInput.supportItemId}}" class="btn">
-                        {{formInput.supportItemId}}
-                      </router-link>
+                  <input v-model="formInput.code" type="text" class="form-control" value="15_982_982_01">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Type</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Family</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.type" type="text" class="form-control" value="">
+                  <input v-model="formInput.family" type="text" class="form-control" value="NDIS">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.address" type="text" class="form-control" value="">
+                  <input v-model="formInput.description" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Quote</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.status" type="text" class="form-control" value="">
+                  <input v-model="formInput.quote" type="text" class="form-control" value="No">
                 </div>
               </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Duration</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input v-model="formInput.duration" type="text" class="form-control" value="">
-                </div>
-              </div>
+
               <span class="clearfix"></span>
 
               <br />
@@ -169,7 +159,7 @@
                 </div>
                 <div class="form-group">
                   <!-- <div class="col-xs-12 col-md-offset-3"> -->
-                  <button v-on:click="saveJob" type="button" class="btn btn-primary">Save Job</button>
+                    <button type="button" class="btn btn-primary">Save Product</button>
                   <!-- </div> -->
                 </div>
 
@@ -188,26 +178,73 @@
             <!-- start accordion -->
             <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
               <div class="panel">
-                <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Attachments (0)</h4>
+                <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
+                  <h4 class="panel-title"><span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Support Items (3)</h4>
                 </a>
-                <div id="collapseThree1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                   <div class="panel-body">
-                    <p><strong>Collapsible Item 2 data</strong>
-                    </p>
-                    <router-link to="/ExistingFundCategory"><button type="submit" class="btn btn-default">New Attachment</button></router-link>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Fund Source</th>
+                          <th>NDIS Category</th>
+                          <th>Total Budget</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"><router-link to="/ExistingSupportItem">0037287</router-link></th>
+                          <td>NDIS Managed</td>
+                          <td>Assistive Technology</td>
+                          <td>$150,000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row"><router-link to="/ExistingSupportItem">0037288</router-link></th>
+                          <td>Thrid Party Managed</td>
+                          <td>Improved Learning</td>
+                          <td>$10,000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row"><router-link to="/ExistingSupportItem">0037289</router-link></th>
+                          <td>Thrid Party Managed</td>
+                          <td>Improved Daily Living Skills</td>
+                          <td>$5,000</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <router-link to="/ExistingFundCategory"><button type="submit" class="btn btn-default">Add Support Item</button></router-link>
                   </div>
                 </div>
               </div>
               <div class="panel">
-                <a class="panel-heading collapsed" role="tab" id="headingFour1" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1" aria-expanded="false" aria-controls="collapseFour">
-                  <h4 class="panel-title"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Notes (0)</h4>
+                <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
+                  <h4 class="panel-title"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Attachments (2)</h4>
                 </a>
-                <div id="collapseFour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                   <div class="panel-body">
-                    <p><strong>Collapsible Item 3 data</strong>
-                    </p>
-                    <router-link to="/ExistingFundCategory"><button type="submit" class="btn btn-default">Add New Note</button></router-link> 
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>File Name</th>
+                          <th>Size</th>
+                          <th>Upload Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Identity Proof.pdf</td>
+                          <td>1.1MB</td>
+                          <td>10-02-2017</td>
+                        </tr>
+                        <tr>
+                          <td>AVO.docx</td>
+                          <td>237kb</td>
+                          <td>17-08-2017</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <router-link to="/ExistingFundCategory"><button type="submit" class="btn btn-default">New Attachment</button></router-link>
                   </div>
                 </div>
               </div>
@@ -227,63 +264,39 @@
   import axios from 'axios';
 
   export default {
+    name: 'hello',
     data () {
       return {
         formInput : {
-          jobNumber : '',
-          supportItemId: '',
-          travelCost : '',
-          type : '',
-          address : '',
-          duration : '',
-          timezone : '',
-          generalLedgerCode : '',
-          quantity : '',
-          reschedule : '',
-          listPrice : '',
-          travelBillable : '',
-          resourceHoursWorked : '',
-          status : '',
-          cancellationReason : '',
-          cancellationComment : ''
+          name : '',
+          code : '',
+          description : '',
+          active : '',
+          family : '',
+          quote : ''
         }
-      }
-    },
-
-    methods : {
-      saveJob: function(){
-        this.formInput.supportItemId = 'SI-12';
-        axios.post('/insertJob', this.formInput)
-        .then(response => {
-          this.$router.push('/ExistingJob/' + response.data.jobId);
-        })
-        .catch(e => {
-          console.log(e);
-        })
       }
     },
 
     mounted(){
-      axios.get('/getJob', {
+      axios.get('/getProduct', {
         params : {
-          jobId : this.$route.params.jobId  
+          productCode : this.$route.params.productCode  
         }
       })
       .then(response => {
         var data = response.data;
-        this.formInput.jobNumber  = data.job_number;
-        this.formInput.supportItemId  = data.support_item_id;
-        this.formInput.type  = data.type;
-        this.formInput.status  = data.status;
-        this.formInput.listPrice  = data.list_price;
-        this.formInput.address  = data.address;
-        this.formInput.duration  = data.duration;
+        this.formInput.name  = data.name;
+        this.formInput.code  = data.code;
+        this.formInput.description  = data.description;
+        this.formInput.active  = data.active;
+        this.formInput.family  = data.family;
+        this.formInput.quote  = data.quote;
       })
       .catch(e => {
         console.log(e);
       })
     }
-
   }
 </script>
 

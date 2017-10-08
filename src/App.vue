@@ -87,7 +87,7 @@
                         <li><a href="form_validation.html">Statistics</a></li>
                       </ul>
                     </li>
-                    <li><router-link to="/"><i class="fa fa-book"></i> Price Books<span class="fa fa-chevron-down"></span></router-link>
+                    <li><router-link to="/Pricebooks"><i class="fa fa-book"></i> Price Books<span class="fa fa-chevron-down"></span></router-link>
                       <ul class="nav child_menu">
                         <li><a href="form.html">Create New Product</a></li>
                         <li><a href="form.html">Create New Price Book</a></li>

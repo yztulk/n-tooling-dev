@@ -23,6 +23,9 @@ import ExistingSupportItem from '@/components/Support_Items_Record'
 import Products from '@/components/Products'
 import NewProduct from '@/components/Products_New'
 import ExistingProduct from '@/components/Products_Record'
+import Pricebooks from '@/components/Pricebooks'
+import NewPricebook from '@/components/Pricebooks_New'
+import ExistingPricebook from '@/components/Pricebooks_Record'
 import Plans from '@/components/Plans'
 import ExistingPlan from '@/components/Plans_Record'
 import NewPlan from '@/components/Plans_New'
@@ -89,6 +92,22 @@ export default new Router( {
 		name: 'ExistingProduct'
 	}, {
 		path: '/ExistingProduct/:productCode',
+		component: ExistingProduct,
+		name: 'ExistingProduct'
+	}, {
+		path: '/Pricebooks',
+		component: Pricebooks,
+		name: 'Pricebooks'
+	}, {
+		path: '/NewPricebook',
+		component: NewPricebook,
+		name: 'NewPricebook'
+	}, {
+		path: '/ExistingPricebook',
+		component: ExistingPricebook,
+		name: 'ExistingPricebook'
+	}, {
+		path: '/ExistingPricebook/:pricebookCode',
 		component: ExistingProduct,
 		name: 'ExistingProduct'
 	}, {

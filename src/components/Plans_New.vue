@@ -32,45 +32,21 @@
             <br />
             <form class="form-horizontal form-label-left">
               <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Plan Number</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Client</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
+                  <input v-model="formInput.client" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Client</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
+                  <input v-model="formInput.status" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Start Date</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">NDIS Nr.</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">End Date</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Carer</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
+                  <input v-model="formInput.startDate" type="text" class="form-control" value="">
                 </div>
               </div>
               <div class="col-md-6 form-group">
@@ -78,7 +54,23 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" class="flat">
+                      <input v-model="formInput.serviceAgreementSent" type="checkbox" class="flat">
+                    </label>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">End Date</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input v-model="formInput.endDate" type="text" class="form-control" value="">
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">SA Signed</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <div class="checkbox">
+                    <label>
+                      <input v-model="formInput.serviceAgreementSent" type="checkbox" class="flat">
                     </label>
                     </div>
                 </div>
@@ -86,122 +78,6 @@
 
               <span class="clearfix"></span>
 
-              <br />
-              <div class="x_title">
-                <h2>Financial Information</h2> 
-                <div class="clearfix"></div>
-              </div>
-              <br />
-              <!-- <div class="ln_solid"></div> -->
-
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Total Budget</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Available</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Committed</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Consumed</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Invoiced</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Claimed</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-
-              <span class="clearfix"></span>
-
-              <br />
-              <div class="x_title">
-                <h2>Travel Cost</h2> 
-                <div class="clearfix"></div>
-              </div>
-              <br />
-              <!-- <div class="ln_solid"></div> -->
-
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Budget</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Remaining</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Consumed</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Total Distribution</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Remaining Distribution</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="" readonly="readonly">
-                </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Travel Claim per Job</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="$" readonly="readonly">
-                </div>
-              </div>
-
-              <span class="clearfix"></span>
-
-              <br />
-              <div class="x_title">
-                <h2>Closing and Cancelling</h2> 
-                <div class="clearfix"></div>
-              </div>
-              <br />
-
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Closed</label>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" class="flat">
-                    </label>
-                  </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Cancellation Reason</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" value="">
-                </div>
-              </div>
-              <span class="clearfix"></span>
 
               <br />
               <div class="x_title">
@@ -306,11 +182,31 @@
 
 <script>
   export default {
-    name: 'hello',
     data () {
       return {
-        
+        formInput : {
+          startDate : '',
+          endDate: '',
+          status : '',
+          serviceAgreementSent : ''
+        }
       }
+    },
+
+    methods : {
+      saveJob: function(){
+        axios.post('/insertPlan', this.formInput)
+        .then(response => {
+          this.$router.push('/ExistingPlan/' + response.data.planId);
+        })
+        .catch(e => {
+          console.log(e);
+        })
+      }
+    },
+
+    mounted(){
+      
     }
   }
 </script>
